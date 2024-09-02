@@ -1,0 +1,96 @@
+---
+import '../styles/zeta.css'
+
+const cards = [
+  { name: 'Check Out Address Autofill For WooCommerce', url: 'https://zetamatic.com/wp-content/uploads/2021/07/checkoutaddresautofill_white.png', buy:"lnk" },
+  { name: 'WP Paint Pro', url: 'https://zetamatic.com/wp-content/uploads/2021/07/wp-paint-pro-banner.png', buy:"lnk" },
+  { name: 'WooCommerce MailChimp NewsLetter Discount', url: 'https://zetamatic.com/wp-content/uploads/2021/07/mailchimp_white.png', buy:"lnk" }
+];
+---
+
+<div class="scroll-container overflow-hidden relative flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 z-10">
+  <div id="cards-wrapper" class="cards-wrapper flex space-x-4 p-8 overflow-x-scroll scroll-smooth snap-x snap-mandatory cursor-grab">
+    {
+      cards.map((data) => (
+        <div class="card flex-shrink-0 shadow-lg rounded-lg overflow-hidden hover:scale-105 snap-center" style="width: 1200px; height: 600px;">
+          <!-- Top Text and Icons -->
+          <div class="text-center bg-transparent">
+            <h1 class="text-4xl font-bold text-white m-2">{data.name}</h1>
+          </div>
+
+          <!-- Image Section -->
+          <div class="relative flex justify-center">
+            <img src={data.url} alt="Card Image" class="object-contain" style="width: 700px; height: 400px;" />
+          </div>
+
+          <!-- Buy Now Button -->
+          <div class="text-center m-8">
+            <a href={data.buy}>
+              <button class="bg-gray-100 text-white px-8 py-3 rounded-lg text-lg">Buy Now</button>
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('cards-wrapper') as HTMLElement;
+  const cards = slider.children;
+  const cardWidth = cards[0].getBoundingClientRect().width;
+  const totalCards = cards.length;
+
+  let isDown = false;
+  let startX: number;
+  let scrollLeft: number;
+
+  // Duplicate cards to create an infinite loop effect
+  for (let i = 0; i < totalCards; i++) {
+    const cloneFirst = cards[i].cloneNode(true) as HTMLElement;
+    const cloneLast = cards[totalCards - 1 - i].cloneNode(true) as HTMLElement;
+    slider.appendChild(cloneFirst);
+    slider.insertBefore(cloneLast, cards[0]);
+  }
+
+  // Adjust the scroll position to be in the middle of the cloned items
+  slider.scrollLeft = cardWidth * totalCards;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3; // Adjust the scroll speed
+    slider.scrollLeft = scrollLeft - walk;
+
+    // Handle infinite scroll boundaries
+    if (slider.scrollLeft <= 0) {
+      slider.scrollLeft = cardWidth * totalCards;
+    } else if (slider.scrollLeft >= cardWidth * (totalCards * 2)) {
+      slider.scrollLeft = cardWidth * totalCards;
+    }
+  });
+});
+
+
+</script>

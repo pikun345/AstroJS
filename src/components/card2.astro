@@ -1,0 +1,83 @@
+---
+import '../styles/zeta.css'
+
+const card2 = [
+  {  url: 'https://zetamatic.com/wp-content/uploads/2021/07/5355037b9198a7f278dd88706c1034a1-150x150-1-150x150.jpeg', heading:"tytytyytytyytytytty uuuuuuuuuuuuuhh iiiii etuyfyu ", desc:"text nrfkirooighor ogvtntmv  i-0th-50iym05v eeeeeeeeeeeufi jgmptlfpm olfrpkgrkg-", end:"ssddeddd uiuii (@ijijcjikniei)" },
+  {  url: 'https://zetamatic.com/wp-content/uploads/2021/07/5f3f6ce9d3a5c36fe7ee26070e22e77d-1.jpeg', heading:"tytytyytytyytytytty uuuuuuuuuuuuuhh iiiii etuyfyu ", desc:"text nrfkirooighor ogvtntmv  i-0th-50iym05v eeeeeeeeeeeufi jgmptlfpm olfrpkgrkg-", end:"ssddeddd uiuii (@ijijcjikniei)" },
+  {  url: 'https://zetamatic.com/wp-content/uploads/2021/07/80457a534022a03eacb721367e1e4998-150x150-1-150x150.jpeg', heading:"tytytyytytyytytytty uuuuuuuuuuuuuhh iiiii etuyfyu ", desc:"text nrfkirooighor ogvtntmv  i-0th-50iym05v eeeeeeeeeeeufi jgmptlfpm olfrpkgrkg-", end:"ssddeddd uiuii (@ijijcjikniei)" },
+  {  url: 'https://zetamatic.com/wp-content/uploads/2021/07/1d011ea491cb82613fa450330bc174af-150x150-1-150x150.jpeg', heading:"tytytyytytyytytytty uuuuuuuuuuuuuhh iiiii etuyfyu ", desc:"text nrfkirooighor ogvtntmv  i-0th-50iym05v eeeeeeeeeeeufi jgmptlfpm olfrpkgrkg-", end:"ssddeddd uiuii (@ijijcjikniei)" },
+  {  url: 'https://zetamatic.com/wp-content/uploads/2021/07/8eacd75bf81651c82b6f76b137a8f6cb-150x150-1-150x150.png', heading:"tytytyytytyytytytty uuuuuuuuuuuuuhh iiiii etuyfyu ", desc:"text nrfkirooighor ogvtntmv  i-0th-50iym05v eeeeeeeeeeeufi jgmptlfpm olfrpkgrkg-", end:"ssddeddd uiuii (@ijijcjikniei)" },
+];
+
+---
+
+
+<div class="bg-gradient-to-r from-purple-600 to-blue-500 mb-40 p-20">
+  <div class="text-center text-white">
+    <h1 class="text-5xl font-bold mb-4">
+      Our Client Testimonials
+    </h1>
+    <h5 class="text-2xl font-semibold">
+      Read what our clients are saying about our products. Read and then believe.
+    </h5>
+  </div>
+
+  <div class="relative overflow-x-auto" id="scrollContainer">
+    <div class="flex flex-row space-x-4 items-stretch" style="min-width: 200%;">
+      {
+        card2.map(data => (
+          <div class="bg-white p-50 flex-none w-45 h-70 flex flex-col items-center shadow-lg overflow-hidden mt-8">
+            <div class="w-full p-8">
+              <img class="rounded-full mx-auto" src={data.url} alt="img logo" />
+            </div>
+            <div class="text-center p-4">
+              <h5 class="font-bold text-lg mb-2">{data.heading}</h5>
+              <p class="text-gray-700 mb-4">{data.desc}</p>
+              <span class="text-orange-500 text-xl">★ ★ ★ ★ ★</span>
+            </div>
+            <div class="text-center mt-4">
+              <h5 class="font-medium text-gray-600 mb-8">{data.end}</h5>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollContainer = document.getElementById('scrollContainer') as HTMLElement;
+
+    if (!scrollContainer) return; // Ensure the element exists
+
+    let isDown = false;
+    let startX: number;
+    let scrollLeft: number;
+
+    scrollContainer.addEventListener('mousedown', (e) => {
+      isDown = true;
+      scrollContainer.classList.add('active');
+      startX = e.pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener('mouseleave', () => {
+      isDown = false;
+      scrollContainer.classList.remove('active');
+    });
+
+    scrollContainer.addEventListener('mouseup', () => {
+      isDown = false;
+      scrollContainer.classList.remove('active');
+    });
+
+    scrollContainer.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2; // Adjust the scroll speed
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+  });
+</script>

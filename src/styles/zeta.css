@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animation for the bottom-to-top underline effect */
+.underline-animation {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .underline-animation::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0; /* Start with no height */
+    background-color: white; /* Adjust the color of the underline */
+    transition: height 0.3s ease; /* Adjust the duration and easing */
+  }
+  
+  .underline-animation:hover::after {
+    height: 2px; /* Adjust the height of the underline */
+  }
+  
+  /* Custom styles for dropdown menu */
+.dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white; /* Background color of the dropdown */
+    color: black; /* Text color of the dropdown */
+    border: 1px solid #ccc; /* Border color of the dropdown */
+    padding: 10px; /* Padding inside the dropdown */
+    z-index: 10; /* Ensure dropdown is above other content */
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  /* Custom glow effect */
+.glow-effect {
+    position: relative;
+    transition: text-shadow 0.3s ease;
+  }
+  
+  .glow-effect:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Adjust the color and blur for the glow effect */
+  }
+  
+  /* zeta.css */
+.nav-bar {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-bar-hidden {
+    transform: translateY(-100%);
+  }
+
+  .navbar-hidden {
+    transform: translateY(-100%);
+  }
+
+  /* card  */
+/* zeta.css */
+/* zeta.css */
+.scroll-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.cards-wrapper {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  flex: 0 0 auto; /* Ensure cards don’t shrink or grow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 200px; /* Adjust based on your design */
+  object-fit: cover;
+}
+
+.card .p-4 {
+  padding: 1rem;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card a {
+  color: #1d4ed8; /* Tailwind's blue-600 */
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.card button {
+  background-color: #2563eb; /* Tailwind's blue-500 */
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem; /* Tailwind's rounded */
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #1d4ed8; /* Tailwind's blue-600 */
+}
+

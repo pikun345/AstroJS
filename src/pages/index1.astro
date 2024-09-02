@@ -1,0 +1,31 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Card from '../components/card.astro';
+import { getCollection } from 'astro:content';
+import Button from '../components/Button.astro';//her inside the button the css used and until u used the button in the imported page the css wont apply inside the index 
+
+const posts = await getCollection('blog');
+---
+<MainLayout title="Homepage">
+
+  <!-- HERE index page u passed as the slot  -->
+
+  <h1>Welcome to My Blog</h1>
+  <div>
+    {posts.map(post => (
+      <Card
+        title={post.data.title}
+        description={post.data.description}
+        link={`/blog/${post.slug}/`}
+      
+      />
+    ))}
+
+    <Button label="1st "/>
+    <Button/>
+    <Button/>
+    <Button/>
+
+
+  </div>
+</MainLayout>

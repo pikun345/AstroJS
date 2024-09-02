@@ -1,0 +1,63 @@
+---
+import '../styles/zeta.css'
+
+const nav1 = [
+  { name: 'zeta_logo', url: '/', style: 'font-bold text-xl' },
+  { name: 'shop', url: '/shop', style: 'text-lg' },
+  { name: 'Help Center', url: '/help', style: 'text-lg', dropdown: [
+    { name: 'Documentation', url: '/documentation' },
+    { name: 'Open a Ticket', url: '/open-ticket' },
+    { name: 'Help Desk', url: '/help-desk' }
+  ]},
+  { name: 'Blog', url: '/blog', style: 'text-lg' },
+  { name: 'Contact', url: '/contact', style: 'text-lg' },
+  { name: 'My Account', url: '/account', style: 'text-lg' },
+  { name: 'search', url: '/search', style: 'text-lg' }
+];
+---
+<nav class="bg-blue-600 text-white p-4 z-50">
+  <div class="container mx-auto flex items-center justify-between glow-effect">
+    {/* Logo */}
+    <div class="flex-shrink-0">
+      <a href={nav1[0].url} class={`underline-animation hover:text-gray-300 ${nav1[0].style}`}>
+        {nav1[0].name}
+      </a>
+    </div>
+    
+    {/* Centered Navigation Items */}
+    <div class="flex-1 flex justify-center space-x-4">
+      {nav1.slice(1, -1).map(item => (
+        <div class={`relative ${item.dropdown ? 'group' : ''}`}>
+          {item.dropdown ? (
+            <div class={`cursor-pointer underline-animation hover:text-gray-300 glow-effect ${item.style}`}>
+              {item.name}
+              <div class="absolute left-0 mt-2 hidden group-hover:block bg-white text-black border border-gray-200 ">
+                <ul>
+                  {item.dropdown.map(subItem => (
+                    <li>
+                      <a href={subItem.url} class="block py-2 px-4 hover:bg-gray-100">
+                        {subItem.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <a href={item.url} class={`underline-animation hover:text-gray-300 glow-effect ${item.style}`}>
+              {item.name}
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+    
+    {/* Search Bar */}
+    <div class="flex-shrink-0">
+      <a href={nav1[nav1.length - 1].url} class={`underline-animation hover:text-gray-300 ${nav1[nav1.length - 1].style}`}>
+        {nav1[nav1.length - 1].name}
+      </a>
+    </div>
+  </div>
+</nav>
+<script src="../typescript/scroll.ts"></script>

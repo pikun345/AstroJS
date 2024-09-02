@@ -1,6 +1,24 @@
+// {  
+//   "extends": "astro/tsconfigs/base",
+//   "compilerOptions": {
+//     "target": "ES6",
+//     "module": "ESNext",
+//     "outDir": "public/scripts",
+//     "rootDir": "src",
+//     "strictNullChecks": true,
+//     "esModuleInterop": true
+//   },
+//   "include": ["src/**/*.ts"]
+// }
+
 {
-  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "strictNullChecks": true
-  }
+    "target": "ES6",
+    "module": "ESNext",
+    "outDir": "public/scripts",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts"]
 }
