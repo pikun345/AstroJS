@@ -3,18 +3,21 @@ import '../styles/zeta.css'
 
 const nav1 = [
   { name: 'zeta_logo', url: '/', style: 'font-bold text-xl' },
-  { name: 'shop', url: '/shop', style: 'text-lg' },
+  { name: 'shop', url: 'dogs/[dog]', style: 'text-lg' },
   { name: 'Help Center', url: '/help', style: 'text-lg', dropdown: [
-    { name: 'Documentation', url: '/documentation' },
+    { name: 'Documentation', url: '/zeta_doc' },
     { name: 'Open a Ticket', url: '/open-ticket' },
     { name: 'Help Desk', url: '/help-desk' }
   ]},
-  { name: 'Blog', url: '/blog', style: 'text-lg' },
+  { name: 'Blog', url: '/zeta_blog', style: 'text-lg' },
   { name: 'Contact', url: '/contact', style: 'text-lg' },
   { name: 'My Account', url: '/account', style: 'text-lg' },
-  { name: 'search', url: '/search', style: 'text-lg' }
 ];
+
+console.log(nav1[3].url)
 ---
+
+
 <nav class="bg-blue-600 text-white p-4 z-50">
   <div class="container mx-auto flex items-center justify-between glow-effect">
     {/* Logo */}
@@ -52,12 +55,194 @@ const nav1 = [
       ))}
     </div>
     
-    {/* Search Bar */}
-    <div class="flex-shrink-0">
-      <a href={nav1[nav1.length - 1].url} class={`underline-animation hover:text-gray-300 ${nav1[nav1.length - 1].style}`}>
-        {nav1[nav1.length - 1].name}
-      </a>
+ {/* Search Bar */}
+<div class="flex-shrink-0 relative">
+  <a href="#" class={`hover:text-gray-300 ${nav1[nav1.length - 1].style}`} id="search-icon">
+    <svg class="w-7 h-5 mr-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+    </svg>
+  </a>
+  
+  {/* Modal */}
+
+  <div id="search-modal" class="fixed inset-0 mt-14 bg-opacity-50 hidden overflow-auto">
+    <div class=" bg-blue-950 w-full h-50 mt-15 rounded-lg p-11">
+      <button class="absolute top-2 right-2 text-white" id="modal-close-btn">X</button>
+      <div class="relative">
+        <svg class="absolute left-2 top-1/2 transform -translate-y-1/2 w-7 h-5 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+        </svg>
+        <input type="text" class="mt-2 mb-1 w-full pl-10 p-2 border-none bg-blue-950" placeholder="Enter your search topic"/>
+      </div>
+      <hr>
+      
+      
+
+  
+
+      <div>
+        <h3 class="font-bold m-5" >The Latest</h3>
+      </div>
+      
+      <div class="grid grid-cols-4 grid-rows-1  bg-blue-950">
+
+        <!-- card1 -->
+        <div class="flex items-start border-r border-gray-400 mt-5 p-3 max-w-xs">
+          <img class="rounded-full mr-3 w-16 h-16" src="https://zetamatic.com/wp-content/uploads/2022/12/Automate-your-work-with-the-top-7-WordPress-Automation-Plugins-and-Tools-1-110x110.png" alt="img1">
+          <div>
+            <div class="mb-3 font-bold text-sm">Automate Your Work With the Top 7 WordPress Automation Plugins and Tools</div>
+            <div class="mb-2 font-semibold text-xs">E-Commerce, Woocommerce, WordPress</div>
+            <div>
+              <ul class="list-disc text-xs">
+                <li>BY MADHUSMITA PARIDA</li>
+                <li>DECEMBER 13, 2022</li>
+                <li>6 MINUTE READ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+       
+       
+        <!-- card1 -->
+        <div class="flex items-start border-r border-gray-400 mt-5 p-3 max-w-xs">
+          <img class="rounded-full mr-3 w-16 h-16" src="https://zetamatic.com/wp-content/uploads/2022/12/Automate-your-work-with-the-top-7-WordPress-Automation-Plugins-and-Tools-1-110x110.png" alt="img1">
+          <div>
+            <div class="mb-3 font-bold text-sm">Automate Your Work With the Top 7 WordPress Automation Plugins and Tools</div>
+            <div class="mb-2 font-semibold text-xs">E-Commerce, Woocommerce, WordPress</div>
+            <div>
+              <ul class="list-disc text-xs">
+                <li>BY MADHUSMITA PARIDA</li>
+                <li>DECEMBER 13, 2022</li>
+                <li>6 MINUTE READ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        
+        <!-- card1 -->
+        <div class="flex items-start border-r border-gray-400 mt-5 p-3 max-w-xs">
+          <img class="rounded-full mr-3 w-16 h-16" src="https://zetamatic.com/wp-content/uploads/2022/12/Automate-your-work-with-the-top-7-WordPress-Automation-Plugins-and-Tools-1-110x110.png" alt="img1">
+          <div>
+            <div class="mb-3 font-bold text-sm">Automate Your Work With the Top 7 WordPress Automation Plugins and Tools</div>
+            <div class="mb-2 font-semibold text-xs">E-Commerce, Woocommerce, WordPress</div>
+            <div>
+              <ul class="list-disc text-xs">
+                <li>BY MADHUSMITA PARIDA</li>
+                <li>DECEMBER 13, 2022</li>
+                <li>6 MINUTE READ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        
+       <!-- card 4 -->
+        <div class="flex items-start border-r border-gray-400 mt-5 p-5">
+        
+          <img class="rounded-full mr-3" src="https://zetamatic.com/wp-content/uploads/2022/10/Best-WordPress-heatmap-plugins-2022-110x110.png" alt="img1">
+         <div>
+          <div class="mb-3 font-bold text-sm">Automate Your Work With the Top 7 WordPress Automation Plugins and Tools</div>
+          <div class="mb-2 font-semibold text-xs">E-Commerce,
+               Woocommerce
+                wordpress
+          </div>
+           <div>
+            <ul class="list-disc text-xs">
+              <li>BY MADHUSMITA PARIDA</li>
+              <li>DECEMBER 13, 2022</li>
+              <li>6 MINUTE READ</li>
+            </ul>
+
+           </div>
+          
+         </div>
+      </div>
+
+
+      <!-- -------------------------------------- -->
+
     </div>
+    
+    
+    <div class="grid grid-cols-7 grid-rows-2 gap-2 m-4">
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP ijijifjiejf irjrijrii Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
+      <div class="bg-pink border border-red-50 flex items-center justify-center p-1">
+          <h5 class="text-center text-[15px]">WP Paint</h5>
+      </div>
   </div>
+  
+      
+
+      
+      <!-- modal end -->
+ 
+
+
+
+
+    </div>
+       
+
+
+  </div>
+  
+  
 </nav>
-<script src="../typescript/scroll.ts"></script>
+
+
+
+ 
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+  const searchIcon = document.getElementById('search-icon') as HTMLElement;
+  const searchModal = document.getElementById('search-modal') as HTMLElement;
+  const modalCloseBtn = document.getElementById('modal-close-btn') as HTMLElement;
+
+  if (searchIcon && searchModal && modalCloseBtn) {
+    searchIcon.addEventListener('click', (e) => {
+      e.preventDefault();
+      searchModal.classList.remove('hidden');
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+      searchModal.classList.add('hidden');
+    });
+
+    // Optional: Close modal if clicking outside of it
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) {
+        searchModal.classList.add('hidden');
+      }
+    });
+  }
+});
+
+</script>

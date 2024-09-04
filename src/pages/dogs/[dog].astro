@@ -1,0 +1,19 @@
+---
+import MainLayout from 'src/layouts/zeta_layout.astro'
+
+
+// This function generates the different paths based on the provided parameters
+export function getStaticPaths() {
+  return [
+    { params: { dog: 'clifford' } },
+    { params: { dog: 'rover' } },
+    { params: { dog: 'spot' } },
+  ];
+}
+
+const { dog } = Astro.params; // Access the dynamic route parameter
+---
+
+<MainLayout>
+  <div>Good dog, {dog}!</div> <!-- Display the dynamic content based on the parameter -->
+</MainLayout>
