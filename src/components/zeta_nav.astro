@@ -1,9 +1,12 @@
 ---
 import '../styles/zeta.css'
+const {extra_feature}=Astro.props;
+import Dark from '../components/toggle.astro'
+
 
 const nav1 = [
   { name: 'zeta_logo', url: '/', style: 'font-bold text-xl' },
-  { name: 'shop', url: 'dogs/[dog]', style: 'text-lg' },
+  { name: 'shop', url: 'dogs/products', style: 'text-lg' },
   { name: 'Help Center', url: '/help', style: 'text-lg', dropdown: [
     { name: 'Documentation', url: '/zeta_doc' },
     { name: 'Open a Ticket', url: '/open-ticket' },
@@ -14,7 +17,8 @@ const nav1 = [
   { name: 'My Account', url: '/account', style: 'text-lg' },
 ];
 
-console.log(nav1[3].url)
+
+console.log("extra")
 ---
 
 
@@ -26,7 +30,7 @@ console.log(nav1[3].url)
         {nav1[0].name}
       </a>
     </div>
-    
+    {console.log("extra")}
     {/* Centered Navigation Items */}
     <div class="flex-1 flex justify-center space-x-4">
       {nav1.slice(1, -1).map(item => (
@@ -54,9 +58,22 @@ console.log(nav1[3].url)
         </div>
       ))}
     </div>
+
+
     
  {/* Search Bar */}
 <div class="flex-shrink-0 relative">
+  <!-- place the dark mode button here -->
+  {/* Search Bar and Extra Feature */}
+  <div class="flex-shrink-0 relative flex items-center space-x-4">
+
+    <!-- extra dark mode for blog nav only -->
+   {extra_feature && <Dark/>}
+
+
+    
+   
+
   <a href="#" class={`hover:text-gray-300 ${nav1[nav1.length - 1].style}`} id="search-icon">
     <svg class="w-7 h-5 mr-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
@@ -214,6 +231,8 @@ console.log(nav1[3].url)
 
   </div>
   
+
+
   
 </nav>
 
@@ -246,3 +265,5 @@ console.log(nav1[3].url)
 });
 
 </script>
+
+

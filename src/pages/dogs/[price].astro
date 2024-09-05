@@ -1,0 +1,13 @@
+---
+
+export function getStaticPaths () {
+ return [
+    {params: {price: '1000'}},
+    {params: {price: '2000'}},
+  ];
+}
+
+const {price } = Astro.params;
+---
+<div>price {price}</div>
+

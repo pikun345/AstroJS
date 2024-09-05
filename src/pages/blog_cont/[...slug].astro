@@ -1,0 +1,35 @@
+---
+import MainLayout from '../../layouts/dynamic_lay.astro';
+
+
+const pages = [
+{
+  slug: undefined,
+  title: 'Astro Store',
+  text: 'Welcome to the Astro store!',
+},
+{
+  slug: 'products',
+  title: 'Astro products',
+  text: 'We have lots of products for you',
+},
+{
+  slug: 'products/astro-handbook',
+  title: 'The ultimate Astro handbook',
+  text: 'If you want to learn Astro, you must read this book.',
+}
+];
+
+const { slug } = Astro.params;
+const page = pages.find((page) => page.slug === slug);
+if (!page) return Astro.redirect("/404");
+const { title, text } = page;
+---
+<MainLayout extra_feature={true}>
+  
+  <div class="bg-pink-400 w-100 h-50">
+
+
+  </div>
+
+</MainLayout>

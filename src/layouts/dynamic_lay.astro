@@ -1,0 +1,58 @@
+---
+import '../styles/zeta.css';
+import BaseHead from '../components/zeta_head.astro';
+import Navbar from '../components/zeta_nav.astro'
+import Footer from '../components/Footer1.astro'
+import Toggle from '../components/toggle.astro';
+const {extra_feature}=Astro.props;
+
+
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <BaseHead title="zeta astro website clone"/>
+
+ 
+  <body class="flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <Navbar extra_feature={extra_feature}/>
+  
+    <!-- Main Content Area -->
+    <main class="flex-grow bg-gray-100">
+     <slot/>
+    </main>
+  
+ <!-- Footer -->
+    <Footer/>
+    
+    
+  </body>
+</html>
+<!-- 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle') as HTMLInputElement;
+    
+    // Check local storage for the theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.body.classList.add(savedTheme);
+      if (savedTheme === 'dark') {
+        themeToggle.checked = true;
+      }
+    }
+
+    themeToggle?.addEventListener('change', () => {
+      if (themeToggle.checked) {
+        document.body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  });
+</script> -->

@@ -1,5 +1,5 @@
 ---
-import MainLayout from 'src/layouts/zeta_layout.astro'
+import MainLayout from '../../layouts/zeta_layout.astro';
 
 
 // This function generates the different paths based on the provided parameters
@@ -16,4 +16,16 @@ const { dog } = Astro.params; // Access the dynamic route parameter
 
 <MainLayout>
   <div>Good dog, {dog}!</div> <!-- Display the dynamic content based on the parameter -->
+  <a href="en-v1">See English version</a>
+  <a href="fr-v2" >also See french version</a>
+  <a href="toy1">toy1</a>
+  <a href="toy2">toy2</a>
+  <!-- <a href="undefined">toy3</a> -->
+  <a href="products"> dynamic products</a>
+  <a href="products/astro-handbook"> dynamic hand book</a>
+  <a href=""> dynamic astro store</a>
+
+
+
+
 </MainLayout>
