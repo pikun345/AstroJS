@@ -1,12 +1,36 @@
 ---
-import MainLayout from '../layouts/zeta_layout.astro';
-import '../styles/zeta.css';
+import MainLayout from '../../../layouts/zeta_layout.astro';
+import '../../../styles/zeta.css';
+
+
+const pages = [
+{
+  blog: 'AllBlog',
+  Text_part:'Latest News',
+  Blogs: [  {ttl:'Getting help',img:'https://zetamatic.com/wp-content/uploads/2020/10/zetamatic-icon-256x256-1-40x40.png',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'}   
+           ],
+              
+  
+}
+];
+
+const { blog } = Astro.params;
+const page = pages.find((page) => page.blog === blog);
+if (!page) return Astro.redirect("/404");
+const { Text_part,Blogs } = page;
 
 ---
 <MainLayout>
 
     <div>
-        <h1 class="text-3xl font-bold text-black ml-10 mb-7 mt-7">Lattest News</h1>
+        <h1 class="text-3xl font-bold text-black ml-10 mb-7 mt-7"> {Text_part} </h1>
     </div>
 
    
