@@ -23,7 +23,6 @@ const pages = [
 
 const { doc } = Astro.params;
 const page = pages.find((page) => page.doc === doc);
-console.log(page);
 
 if (!page) return Astro.redirect("/404");
 const { Heading,DocList } = page;
