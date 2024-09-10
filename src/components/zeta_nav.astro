@@ -1,6 +1,8 @@
 ---
 import '../styles/zeta.css'
 const {extra_feature}=Astro.props;
+const {extra1}=Astro.props;
+
 import Dark from '../components/toggle.astro'
 
 
@@ -67,7 +69,8 @@ const nav1 = [
   <div class="flex-shrink-0 relative flex items-center space-x-4">
 
     <!-- extra dark mode for blog nav only -->
-   {extra_feature && <Dark/>}
+   <!-- {extra_feature && <Dark/>} -->
+
 
 
     
@@ -229,11 +232,16 @@ const nav1 = [
 
 
   </div>
+
   
 
 
   
 </nav>
+
+<!-- shareable cont -->
+
+
 
 
 
