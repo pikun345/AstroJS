@@ -6,7 +6,7 @@ import '../../../../styles/zeta.css';
 
 const pages = [
 {
-  cont1: 'content1',
+  cont: 'content1',
   info: [  {img:'https://zetamatic.com/wp-content/uploads/2022/12/Automate-your-work-with-the-top-7-WordPress-Automation-Plugins-and-Tools-1.png',txt:"im the text",
            lst:[{itm1:'Ecommerce',itm2:'WooCommerce',itm3:'wordPress'}],
            author:"Madhusmita Parida",dt:"DECEMBER 13, 2022",time:"6 min read",
@@ -19,11 +19,41 @@ const pages = [
           ],
               
   
+},
+{
+  cont: 'content2',
+  info: [  {img:'https://zetamatic.com/wp-content/uploads/2022/11/Best-WordPress-heatmap-plugins-2023.png',txt:"im the text",
+           lst:[{itm1:'Ecommerce',itm2:'WooCommerce',itm3:'wordPress'}],
+           author:"Ashlesha Thakur",dt:"DECEMBER 11, 2024",time:"7 min read",
+           lnk1:"8 best free schema plugin",
+           lnk2:"8 best free schema plugin",
+           plugin_lst:[{itm1:'wordpress', itm2:'Text',itm3:'text text',itm4:'txt txt'}]
+           
+        
+           }
+          ],
+              
+  
+},
+{
+  cont: 'content3',
+  info: [  {img:'https://zetamatic.com/wp-content/uploads/2022/10/Best-WordPress-heatmap-plugins-2022.png',txt:"im the text",
+           lst:[{itm1:'Ecommerce',itm2:'WooCommerce',itm3:'wordPress'}],
+           author:"Surya Prasad ",dt:"DECEMBER 11, 2022",time:"7 min read",
+           lnk1:"8 best free schema plugin",
+           lnk2:"8 best free schema plugin",
+           plugin_lst:[{itm1:'wordpress', itm2:'Text',itm3:'text text',itm4:'txt txt'}]
+           
+        
+           }
+          ],
+              
+  
 }
 ];
 
-const { cont1 } = Astro.params;
-const page = pages.find((page) => page.cont1 === cont1);
+const { cont } = Astro.params;
+const page = pages.find((page) => page.cont === cont);
 if (!page) return Astro.redirect("/404");
 const {info } = page;
 
@@ -37,11 +67,19 @@ const {info } = page;
       <div>
         <img src={info[0].img} alt="img1" height="800" width="1200" class="relative z-10">
       </div>
-      <div class="absolute bottom-10 left-32 z-40 p-5 mb-5">
+      
+      
+      
+    </div>
+
+    <div class="absolute -bottom-48 left-40 z-50 mb-12 mt-16 p-4 text-blue-600 font-bold">
+      <!--  -->
+
+      <div class="absolute bottom-48 -left-3 p-5 mb-5">
         <ul class="flex flex-row">
           <div class="bg-gray-500 bg-opacity-50 m-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
             <li class="m-2 bg-opacity-50 text-white font-semibold">
-              <a href="">{info[0].lst[0].itm1}</a>
+              <a href="/zetaDynPg/blog_fol/content/lists/ecom">{info[0].lst[0].itm1}</a>
             </li>
           </div>
           
@@ -61,11 +99,7 @@ const {info } = page;
           
         </ul>
       </div>
-      
-      
-    </div>
-
-    <div class="absolute -bottom-44 left-40 z-50 mb-12 mt-16 p-4 text-blue-600 font-bold">
+      <!--  -->
       <div>
         <span class="block text-4xl leading-relaxed break-words bg-green-400">
           Automate Your Work with the Top 7
