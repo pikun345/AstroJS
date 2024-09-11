@@ -1,13 +1,12 @@
 ---
-import MainLayout from '../../../layouts/zeta_layout.astro';
-import '../../../styles/zeta.css';
+import MainLayout from '../layouts/zeta_layout.astro';
+import '../styles/zeta.css';
 
 
-const pages = [
-{
-  doc: 'doc',
-  Heading:'Documentation',
-  DocList: [{title:'Getting help',icon:'https://zetamatic.com/wp-content/uploads/2020/10/zetamatic-icon-256x256-1-40x40.png',article:'4 numbers'},
+
+const doc={
+    Heading:"Documentation",
+    DocList: [{title:'Getting help',icon:'https://zetamatic.com/wp-content/uploads/2020/10/zetamatic-icon-256x256-1-40x40.png',article:'4 numbers'},
             {title:'WooCommerce',icon:'url2',article:'4 numbers'},
             {title:'Getting help',icon:'url',article:'4 numbers'},
             {title:'WooCommerce',icon:'url2',article:'4 numbers'},
@@ -16,36 +15,28 @@ const pages = [
             {title:'Getting help',icon:'url',article:'4 numbers'},
             {title:'WooCommerce',icon:'url2',article:'4 numbers'}   
            ],
-              
-  
+
 }
-];
-
-const { doc } = Astro.params;
-const page = pages.find((page) => page.doc === doc);
-
-if (!page) return Astro.redirect("/404");
-const { Heading,DocList } = page;
 ---
-<MainLayout>
+<!-- <MainLayout> -->
 
     <!-- card shown -->
     <div class="p-16">
-        <h1 class="font-bold text-gray-950 mb-7 text-[50px]">{Heading}</h1>
+        <h1 class="font-bold text-gray-950 mb-7 text-[50px]">{doc.Heading}</h1>
 
         <div class="grid grid-cols-3 gap-7 mb-28 ">
           
         
             <div class="flex items-start space-x-4">
               <div>
-               <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+               <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
                   </div>
         <div class="relative group w-max">
             <span class="block group-hover:translate-y-6 transition-transform">
-                <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+                <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
             </span>
             <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-                 {DocList[0].article}
+                 {doc.DocList[0].article}
             </h5>
         </div>
     </div>
@@ -53,14 +44,14 @@ const { Heading,DocList } = page;
     <!--  -->
     <div class="flex items-start space-x-4">
       <div>
-       <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+       <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
           </div>
 <div class="relative group w-max">
     <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+        <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
     </span>
     <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {DocList[0].article}
+         {doc.DocList[0].article}
     </h5>
 </div>
 </div>
@@ -70,14 +61,14 @@ const { Heading,DocList } = page;
     <!--  -->
     <div class="flex items-start space-x-4">
       <div>
-       <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+       <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
           </div>
 <div class="relative group w-max">
     <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+        <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
     </span>
     <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {DocList[0].article}
+         {doc.DocList[0].article}
     </h5>
 </div>
 </div>
@@ -95,14 +86,14 @@ const { Heading,DocList } = page;
     <!--  -->
     <div class="flex items-start space-x-4">
       <div>
-       <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+       <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
           </div>
 <div class="relative group w-max">
     <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+        <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
     </span>
     <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {DocList[0].article}
+         {doc.DocList[0].article}
     </h5>
 </div>
 </div>
@@ -112,14 +103,14 @@ const { Heading,DocList } = page;
     <!--  -->
     <div class="flex items-start space-x-4">
       <div>
-       <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+       <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
           </div>
 <div class="relative group w-max">
     <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+        <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
     </span>
     <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {DocList[0].article}
+         {doc.DocList[0].article}
     </h5>
 </div>
 </div>
@@ -128,14 +119,14 @@ const { Heading,DocList } = page;
     <!--  -->
     <div class="flex items-start space-x-4">
       <div>
-       <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+       <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
           </div>
 <div class="relative group w-max">
     <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+        <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
     </span>
     <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {DocList[0].article}
+         {doc.DocList[0].article}
     </h5>
 </div>
 </div>
@@ -143,14 +134,14 @@ const { Heading,DocList } = page;
     <!--  -->
     <div class="flex items-start space-x-4">
       <div>
-       <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+       <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
           </div>
 <div class="relative group w-max">
     <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+        <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
     </span>
     <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {DocList[0].article}
+         {doc.DocList[0].article}
     </h5>
 </div>
 </div>
@@ -161,14 +152,14 @@ const { Heading,DocList } = page;
     <!--  -->
     <div class="flex items-start space-x-4">
       <div>
-       <img src={DocList[0].icon} alt="img1" class="w-10 h-10">
+       <img src={doc.DocList[0].icon} alt="img1" class="w-10 h-10">
           </div>
 <div class="relative group w-max">
     <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{DocList[0].title}</h2>
+        <h2 class="truncate max-w-48">{doc.DocList[0].title}</h2>
     </span>
     <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {DocList[0].article}
+         {doc.DocList[0].article}
     </h5>
 </div>
 </div>
@@ -178,4 +169,6 @@ const { Heading,DocList } = page;
     
     </div>
   
-  </MainLayout>
+  <!-- </MainLayout> -->
+  
+  
