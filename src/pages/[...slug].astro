@@ -1,0 +1,30 @@
+---
+import Home from '../components/Home.astro';
+import Doc from '../components/doc.astro';
+import Blog from '../components/blog.astro'
+import MainLayout from '../layouts/zeta_layout.astro'
+
+export async function getStaticPaths() {
+  const pages = [
+    { slug: undefined, component: Home },
+     { slug: "doc", component: Doc },
+     { slug: "blog", component: Blog }, 
+  ];
+
+  return pages.map(({ slug, component }) => {
+    return {
+      params: { slug },
+      props: { component },
+    };
+  });
+}
+
+const { component: PageComponent } = Astro.props;
+---
+
+<MainLayout>
+     <div class="container mx-auto">
+       <PageComponent />
+      </div>
+</MainLayout>
+ 
