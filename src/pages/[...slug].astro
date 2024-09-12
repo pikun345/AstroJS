@@ -1,14 +1,18 @@
 ---
 import Home from '../components/Home.astro';
-import Doc from '../components/doc.astro';
-import Blog from '../components/blog.astro'
-import MainLayout from '../layouts/zeta_layout.astro'
+import Doc from '../components/ZetaDoc.astro';
+import Blog from '../components/ZetaBlog.astro';
+import Cont from '../components/BlogContent.astro'; 
+import MainLayout from '../layouts/ZetaMainLayOut.astro';
+import DyLayout from '../layouts/DynamicPgLayOut.astro'; 
 
 export async function getStaticPaths() {
   const pages = [
-    { slug: undefined, component: Home },
-     { slug: "doc", component: Doc },
-     { slug: "blog", component: Blog }, 
+    { slug: undefined, component: Home },  
+    { slug: "doc", component: Doc },       
+    { slug: "blog", component: Blog },     
+    { slug: "blog/content", component: Cont }, // Content 1
+    // { slug: "blog/content2", component: Cont }, // Content 2
   ];
 
   return pages.map(({ slug, component }) => {
@@ -20,11 +24,22 @@ export async function getStaticPaths() {
 }
 
 const { component: PageComponent } = Astro.props;
+const { slug } = Astro.params;
+
+// Determine which layout to use
+const isContentPage = slug?.startsWith("blog/content");
 ---
 
-<MainLayout>
-     <div class="container mx-auto">
-       <PageComponent />
-      </div>
-</MainLayout>
- 
+{isContentPage ? (
+  <DyLayout>
+    <div class="container mx-auto">
+      <PageComponent />
+    </div>
+  </DyLayout>
+) : (
+  <MainLayout>
+    <div class="container mx-auto">
+      <PageComponent />
+    </div>
+  </MainLayout>
+)}
