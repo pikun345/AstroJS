@@ -1,29 +1,7 @@
 ---
-import DyLayout from '../layouts/DynamicPgLayOut.astro';
-import '../styles/zeta.css';
-
-
-
- 
-const pages = 
-{
-  cont: 'content', 
-  info: [  {img:'https://zetamatic.com/wp-content/uploads/2022/12/Automate-your-work-with-the-top-7-WordPress-Automation-Plugins-and-Tools-1.png',txt:"im the text",
-           lst:{itm1:'Ecommerce',itm2:'WooCommerce',itm3:'wordPress'},
-           author:"Madhusmita Parida",dt:"DECEMBER 13, 2022",time:"6 min read",
-           lnk1:"8 best free schema plugin",
-           lnk2:"8 best free schema plugin",
-           plugin_lst:[{itm1:'wordpress', itm2:'Text',itm3:'text text',itm4:'txt txt'}]
-           
-        
-           }
-          ],
-              
-  
-}
-;
-
-
+import DyLayout from '../../layouts/DynamicPgLayOut.astro';
+import '../../styles/zeta.css';
+import {ContData} from '../../components/DemoBackend.astro' //getting data from the Demo backend
 
 ---
 <!-- <DyLayout> -->
@@ -33,7 +11,7 @@ const pages =
 
      <div class="relative flex items-center justify-center">
       <div>
-        <img src={pages.info[0].img} alt="img1" height="800" width="1200" class="relative z-10">
+        <img src={ContData[0].info[0].img} alt="img1" height="800" width="1200" class="relative z-10">
       </div>
       
       
@@ -47,19 +25,19 @@ const pages =
         <ul class="flex flex-row">
           <div class="bg-gray-500 bg-opacity-50 m-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
             <li class="m-2 bg-opacity-50 text-white font-semibold">
-              <a href="/zetaDynPg/blog_fol/content/lists/ecom">{pages.info[0].lst.itm1}</a>
+              <a href="/zetaDynPg/blog_fol/content/lists/ecom">{ContData[0].info[0].lst.itm1}</a>
             </li>
           </div>
           
           <div class="bg-gray-500 bg-opacity-50 m-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
             <li class="m-2 bg-opacity-50 text-white font-semibold">
-              <a href="/zetaDynPg/blog_fol/content/lists/wooComm">{pages.info[0].lst.itm2}</a>
+              <a href="/zetaDynPg/blog_fol/content/lists/wooComm">{ContData[0].info[0].lst.itm2}</a>
             </li>
           </div>
 
           <div class="bg-gray-500 bg-opacity-50 m-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
             <li class="m-2 bg-opacity-50 text-white font-semibold">
-              <a href="/zetaDynPg/blog_fol/content/lists/wordPress">{pages.info[0].lst.itm3}</a>
+              <a href="/zetaDynPg/blog_fol/content/lists/wordPress">{ContData[0].info[0].lst.itm3}</a>
             </li>
           </div>
           
@@ -91,10 +69,10 @@ const pages =
           <div class="flex flex-row">
             <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
               <span>BY</span>
-              <span class="font-bold hover:text-gray-500 text-black">{pages.info[0].author}</span>
+              <span class="font-bold hover:text-gray-500 text-black">{ContData[0].info[0].author}</span>
               <span>•</span>
-              <span> {pages.info[0].dt} </span>
-              <span> {pages.info[0].time} </span>
+              <span> {ContData[0].info[0].dt} </span>
+              <span> {ContData[0].info[0].time} </span>
 
           </div>
           </div>
@@ -169,19 +147,19 @@ const pages =
         <ul class="flex flex-row">
           <div class="bg-gray-500 bg-opacity-50 mt-2 mb-2 mr-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
             <li class="m-2 bg-opacity-50 text-white font-semibold">
-              <a href="/zetaDynPg/blog_fol/content/lists/ecom">{pages.info[0].lst.itm1}</a>
+              <a href="/zetaDynPg/blog_fol/content/lists/ecom">{ContData[0].info[0].lst.itm1}</a>
             </li>
           </div>
           
           <div class="bg-gray-500 bg-opacity-50 mt-2 mb-2 mr-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
             <li class="m-2 bg-opacity-50 text-white font-semibold">
-              <a href="/zetaDynPg/blog_fol/content/lists/wooComm">{pages.info[0].lst.itm2}</a>
+              <a href="/zetaDynPg/blog_fol/content/lists/wooComm">{ContData[0].info[0].lst.itm2}</a>
             </li>
           </div>
 
           <div class="bg-gray-500 bg-opacity-50 mt-2 mb-2 mr-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
             <li class="m-2 bg-opacity-50 text-white font-semibold">
-              <a href="/zetaDynPg/blog_fol/content/lists/wordPress">{pages.info[0].lst.itm3}</a>
+              <a href="/zetaDynPg/blog_fol/content/lists/wordPress">{ContData[0].info[0].lst.itm3}</a>
             </li>
           </div>
           

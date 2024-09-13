@@ -1,45 +1,53 @@
 ---
-import Home from '../components/Home.astro';
-import Doc from '../components/ZetaDoc.astro';
-import Blog from '../components/ZetaBlog.astro';
-import Cont from '../components/BlogContent.astro'; 
+import Home from '../components/tempLets/Home.astro';
+import Doc from '../components/ZetaPages/ZetaDoc.astro';
+import Blog from '../components/ZetaPages/ZetaBlog.astro';
+import Cont from '../components/ZetaPages/BlogContent.astro'; 
+
+import { ContData } from '../components/DemoBackend.astro'; // Correct way to import the array
 import MainLayout from '../layouts/ZetaMainLayOut.astro';
 import DyLayout from '../layouts/DynamicPgLayOut.astro'; 
 
+
 export async function getStaticPaths() {
   const pages = [
-    { slug: undefined, component: Home },  
+    { slug: "", component: Home },  
     { slug: "doc", component: Doc },       
-    { slug: "blog", component: Blog },     
-    { slug: "blog/content", component: Cont }, // Content 1
-    // { slug: "blog/content2", component: Cont }, // Content 2
+    { slug: "blog", component: Blog },   
   ];
 
-  return pages.map(({ slug, component }) => {
+  // Map over ContData and add each item dynamically
+  const contentPages = ContData.map((data) => ({
+    slug: data.slug,
+    component: Cont
+  }));
+
+  // Combine pages and contentPages into one array
+  const allPages = [...pages, ...contentPages];
+
+  const staticPaths = allPages.map(({ slug, component }) => {
     return {
       params: { slug },
       props: { component },
     };
   });
+
+  return staticPaths;
 }
 
-const { component: PageComponent } = Astro.props;
 const { slug } = Astro.params;
+const { component: PageComponent } = Astro.props;
 
 // Determine which layout to use
 const isContentPage = slug?.startsWith("blog/content");
----
 
+---
 {isContentPage ? (
   <DyLayout>
-    <div class="container mx-auto">
-      <PageComponent />
-    </div>
+    <PageComponent />
   </DyLayout>
 ) : (
   <MainLayout>
-    <div class="container mx-auto">
-      <PageComponent />
-    </div>
+    <PageComponent />
   </MainLayout>
 )}
