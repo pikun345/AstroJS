@@ -1,27 +1,27 @@
 ---
 import MainLayout from '../../layouts/ZetaMainLayOut.astro';
 import '../../styles/zeta.css';
-import {ContData} from '../DemoBackend.astro'
+import {ContData,blg} from '../DemoBackend.astro'
 
 
 
 
-const pages =[ 
-{
-  Text_part:'Latest News',
-  Blogs: [  {ttl:'WORDPRESS',img:'https://zetamatic.com/wp-content/uploads/2022/11/Best-WordPress-heatmap-plugins-2023-380x214.png',ttl2:'Read More',ttl3:'4 min read',by:'Madhusmita Jena',dt:'SEPTEMBER 14, 2022',rv:'A Review of the Best WordPress Image Plugins',rv2:'Images are one of the most important parts of your website’s user experience. If you have text-heavy content…'},
-            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
-            // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
-            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
-            // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
-            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
-            // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
-            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'}   
-           ],
+// const blg =[ 
+// {
+//   Text_part:'Latest News',
+//   Blogs: [  {ttl:'WORDPRESS',img:'https://zetamatic.com/wp-content/uploads/2022/11/Best-WordPress-heatmap-plugins-2023-380x214.png',ttl2:'Read More',ttl3:'4 min read',by:'Madhusmita Jena',dt:'SEPTEMBER 14, 2022',rv:'A Review of the Best WordPress Image Plugins',rv2:'Images are one of the most important parts of your website’s user experience. If you have text-heavy content…'},
+//             // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+//             // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+//             // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+//             // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+//             // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+//             // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+//             // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'}   
+//            ],
               
   
-}
-];
+// }
+// ];
 
 
 ---
@@ -31,7 +31,7 @@ const pages =[
     
 
     <div>
-        <h1 class="text-3xl font-bold text-black ml-10 mb-7 mt-7"> {pages[0].Text_part} </h1>
+        <h1 class="text-3xl font-bold text-black ml-10 mb-7 mt-7"> {blg[0].Text_part} </h1>
     </div>
 
    
@@ -45,15 +45,15 @@ const pages =[
             <!-- 1st -->
             <div class="relative group">
                 <a href={ContData[0].slug}>
-                <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+                <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
                 <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
                     <!-- Centered "Read More" text -->
                     <div class="flex items-center justify-center flex-grow">
-                        <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+                        <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
                     </div>
                     <!-- "4 min read" text at the bottom -->
                     <div class="flex justify-center">
-                        <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+                        <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
                     </div>
                 </div>
                 </a>
@@ -61,21 +61,21 @@ const pages =[
 
                 <div class="flex flex-col  w-96 h-60 mt-2">
                     <!-- Title -->
-                    <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+                    <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
                     <!-- Description -->
                     <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-                         {pages[0].Blogs[0].rv}
+                         {blg[0].Blogs[0].rv}
                     </p>
                     <p class="text-sm text-gray-600 mt-4 mb-3">
-                        {pages[0].Blogs[0].rv2}
+                        {blg[0].Blogs[0].rv2}
                         
                     </p>
                     <!-- Author and Date -->
                     <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
                         <span>BY</span>
-                        <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+                        <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
                         <span>•</span>
-                        <span> {pages[0].Blogs[0].dt} </span>
+                        <span> {blg[0].Blogs[0].dt} </span>
                     </div>
                   </div>  
                 
@@ -85,15 +85,15 @@ const pages =[
           <!-- 2nd -->
           <div class="relative group">
             <a href="../blog_fol/content/content2">
-            <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+            <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
             <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
                 <!-- Centered "Read More" text -->
                 <div class="flex items-center justify-center flex-grow">
-                    <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+                    <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
                 </div>
                 <!-- "4 min read" text at the bottom -->
                 <div class="flex justify-center">
-                    <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+                    <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
                 </div>
             </div>
             </a>
@@ -101,21 +101,21 @@ const pages =[
 
             <div class="flex flex-col  w-96 h-60 mt-2">
                 <!-- Title -->
-                <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+                <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
                 <!-- Description -->
                 <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-                     {pages[0].Blogs[0].rv}
+                     {blg[0].Blogs[0].rv}
                 </p>
                 <p class="text-sm text-gray-600 mt-4 mb-3">
-                    {pages[0].Blogs[0].rv2}
+                    {blg[0].Blogs[0].rv2}
                     
                 </p>
                 <!-- Author and Date -->
                 <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
                     <span>BY</span>
-                    <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+                    <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
                     <span>•</span>
-                    <span> {pages[0].Blogs[0].dt} </span>
+                    <span> {blg[0].Blogs[0].dt} </span>
                 </div>
               </div>  
             
@@ -125,15 +125,15 @@ const pages =[
         <!-- 3rd -->
         <div class="relative group">
             <a href="../blog_fol/content/content3">
-            <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+            <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
             <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
                 <!-- Centered "Read More" text -->
                 <div class="flex items-center justify-center flex-grow">
-                    <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+                    <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
                 </div>
                 <!-- "4 min read" text at the bottom -->
                 <div class="flex justify-center">
-                    <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+                    <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
                 </div>
             </div>
             </a>
@@ -141,21 +141,21 @@ const pages =[
 
             <div class="flex flex-col  w-96 h-60 mt-2">
                 <!-- Title -->
-                <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+                <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
                 <!-- Description -->
                 <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-                     {pages[0].Blogs[0].rv}
+                     {blg[0].Blogs[0].rv}
                 </p>
                 <p class="text-sm text-gray-600 mt-4 mb-3">
-                    {pages[0].Blogs[0].rv2}
+                    {blg[0].Blogs[0].rv2}
                     
                 </p>
                 <!-- Author and Date -->
                 <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
                     <span>BY</span>
-                    <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+                    <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
                     <span>•</span>
-                    <span> {pages[0].Blogs[0].dt} </span>
+                    <span> {blg[0].Blogs[0].dt} </span>
                 </div>
               </div>  
             
@@ -165,15 +165,15 @@ const pages =[
 <!-- 4 -->
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -181,21 +181,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -205,15 +205,15 @@ const pages =[
 <!-- 5th -->
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -221,21 +221,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -246,15 +246,15 @@ const pages =[
 
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -262,21 +262,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -287,15 +287,15 @@ const pages =[
 
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -303,21 +303,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -328,15 +328,15 @@ const pages =[
 
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -344,21 +344,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -369,15 +369,15 @@ const pages =[
 
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -385,21 +385,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -409,15 +409,15 @@ const pages =[
 <!-- 5th -->
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -425,62 +425,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
-        </div>
-      </div>  
-    
-
-</div>
-
-<!-- 5th -->
-
-<div class="relative group">
-    <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
-    <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
-        <!-- Centered "Read More" text -->
-        <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
-        </div>
-        <!-- "4 min read" text at the bottom -->
-        <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
-        </div>
-    </div>
-    </a>
-    
-
-    <div class="flex flex-col  w-96 h-60 mt-2">
-        <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
-        <!-- Description -->
-        <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
-        </p>
-        <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
-            
-        </p>
-        <!-- Author and Date -->
-        <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
-            <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
-            <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -491,15 +450,15 @@ const pages =[
 
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -507,61 +466,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
-        </div>
-      </div>  
-    
-
-</div>
-
-<!-- 5th -->
-<div class="relative group">
-    <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
-    <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
-        <!-- Centered "Read More" text -->
-        <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
-        </div>
-        <!-- "4 min read" text at the bottom -->
-        <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
-        </div>
-    </div>
-    </a>
-    
-
-    <div class="flex flex-col  w-96 h-60 mt-2">
-        <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
-        <!-- Description -->
-        <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
-        </p>
-        <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
-            
-        </p>
-        <!-- Author and Date -->
-        <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
-            <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
-            <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -572,15 +491,15 @@ const pages =[
 
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -588,21 +507,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -612,15 +531,15 @@ const pages =[
 <!-- 5th -->
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -628,21 +547,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -653,15 +572,15 @@ const pages =[
 
 <div class="relative group">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -669,21 +588,102 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
+        </div>
+      </div>  
+    
+
+</div>
+
+<!-- 5th -->
+<div class="relative group">
+    <a href="/blog_cont/products/astro-handbook">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
+        <!-- Centered "Read More" text -->
+        <div class="flex items-center justify-center flex-grow">
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
+        </div>
+        <!-- "4 min read" text at the bottom -->
+        <div class="flex justify-center">
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
+        </div>
+    </div>
+    </a>
+    
+
+    <div class="flex flex-col  w-96 h-60 mt-2">
+        <!-- Title -->
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
+        <!-- Description -->
+        <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
+             {blg[0].Blogs[0].rv}
+        </p>
+        <p class="text-sm text-gray-600 mt-4 mb-3">
+            {blg[0].Blogs[0].rv2}
+            
+        </p>
+        <!-- Author and Date -->
+        <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
+            <span>BY</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
+            <span>•</span>
+            <span> {blg[0].Blogs[0].dt} </span>
+        </div>
+      </div>  
+    
+
+</div>
+
+<!-- 5th -->
+
+<div class="relative group">
+    <a href="/blog_cont/products/astro-handbook">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
+        <!-- Centered "Read More" text -->
+        <div class="flex items-center justify-center flex-grow">
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
+        </div>
+        <!-- "4 min read" text at the bottom -->
+        <div class="flex justify-center">
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
+        </div>
+    </div>
+    </a>
+    
+
+    <div class="flex flex-col  w-96 h-60 mt-2">
+        <!-- Title -->
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
+        <!-- Description -->
+        <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
+             {blg[0].Blogs[0].rv}
+        </p>
+        <p class="text-sm text-gray-600 mt-4 mb-3">
+            {blg[0].Blogs[0].rv2}
+            
+        </p>
+        <!-- Author and Date -->
+        <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
+            <span>BY</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
+            <span>•</span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -694,15 +694,15 @@ const pages =[
 
 <div class="relative group hidden">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -710,21 +710,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -735,15 +735,15 @@ const pages =[
 
 <div class="relative group hidden">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -751,21 +751,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -776,15 +776,15 @@ const pages =[
 
 <div class="relative group hidden">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -792,21 +792,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -817,15 +817,15 @@ const pages =[
 
 <div class="relative group hidden">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -833,21 +833,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -857,15 +857,15 @@ const pages =[
 <!-- 5th -->
 <div class="relative group hidden">
     <a href="/blog_cont/products/astro-handbook">
-    <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+    <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
     <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
         <!-- Centered "Read More" text -->
         <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
         </div>
         <!-- "4 min read" text at the bottom -->
         <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+            <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
         </div>
     </div>
     </a>
@@ -873,21 +873,21 @@ const pages =[
 
     <div class="flex flex-col  w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
         <!-- Description -->
         <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-             {pages[0].Blogs[0].rv}
+             {blg[0].Blogs[0].rv}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-            {pages[0].Blogs[0].rv2}
+            {blg[0].Blogs[0].rv2}
             
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
             <span>BY</span>
-            <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+            <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
             <span>•</span>
-            <span> {pages[0].Blogs[0].dt} </span>
+            <span> {blg[0].Blogs[0].dt} </span>
         </div>
       </div>  
     
@@ -897,15 +897,15 @@ const pages =[
 <!-- 5th -->
 <div class="relative group hidden">
                 <a href="/blog_cont/products/astro-handbook">
-                <img src={pages[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
+                <img src={blg[0].Blogs[0].img} alt="Image" class="w-96 h-52 object-cover">
                 <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
                     <!-- Centered "Read More" text -->
                     <div class="flex items-center justify-center flex-grow">
-                        <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl2}</h5>
+                        <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl2}</h5>
                     </div>
                     <!-- "4 min read" text at the bottom -->
                     <div class="flex justify-center">
-                        <h5 class="font-bold text-white"> {pages[0].Blogs[0].ttl3}</h5>
+                        <h5 class="font-bold text-white"> {blg[0].Blogs[0].ttl3}</h5>
                     </div>
                 </div>
                 </a>
@@ -913,21 +913,21 @@ const pages =[
 
                 <div class="flex flex-col  w-96 h-60 mt-2">
                     <!-- Title -->
-                    <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{pages[0].Blogs[0].ttl}</h3>
+                    <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blg[0].Blogs[0].ttl}</h3>
                     <!-- Description -->
                     <p class=" mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-                         {pages[0].Blogs[0].rv}
+                         {blg[0].Blogs[0].rv}
                     </p>
                     <p class="text-sm text-gray-600 mt-4 mb-3">
-                        {pages[0].Blogs[0].rv2}
+                        {blg[0].Blogs[0].rv2}
                         
                     </p>
                     <!-- Author and Date -->
                     <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
                         <span>BY</span>
-                        <span class="font-bold hover:text-gray-500 text-black">{pages[0].Blogs[0].by}</span>
+                        <span class="font-bold hover:text-gray-500 text-black">{blg[0].Blogs[0].by}</span>
                         <span>•</span>
-                        <span> {pages[0].Blogs[0].dt} </span>
+                        <span> {blg[0].Blogs[0].dt} </span>
                     </div>
                   </div>  
                 

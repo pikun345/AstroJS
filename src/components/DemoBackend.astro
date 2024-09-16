@@ -1,4 +1,6 @@
 ---
+import ZetaDoc from "./ZetaPages/ZetaDoc.astro";
+
 export const ContData =[
 {
   cont: 'content', 
@@ -48,4 +50,49 @@ export const ContData =[
 
 ];
 
+
+ export const doc={
+    Heading:"Documentation",
+    DocList: [{title:'Getting help',icon:'https://zetamatic.com/wp-content/uploads/2020/10/zetamatic-icon-256x256-1-40x40.png',article:'4 numbers'},
+            {title:'WooCommerce',icon:'url2',article:'4 numbers'},
+            {title:'Getting help',icon:'url',article:'4 numbers'},
+            {title:'WooCommerce',icon:'url2',article:'4 numbers'},
+            {title:'Getting help',icon:'url',article:'4 numbers'},
+            {title:'WooCommerce',icon:'url2',article:'4 numbers'},
+            {title:'Getting help',icon:'url',article:'4 numbers'},
+            {title:'WooCommerce',icon:'url2',article:'4 numbers'}   
+           ],
+    slug:"doc"
+
+};
+
+
+export const blg =[ 
+{
+  Text_part:'Latest News',
+  Blogs: [  {ttl:'WORDPRESS',img:'https://zetamatic.com/wp-content/uploads/2022/11/Best-WordPress-heatmap-plugins-2023-380x214.png',ttl2:'Read More',ttl3:'4 min read',by:'Madhusmita Jena',dt:'SEPTEMBER 14, 2022',rv:'A Review of the Best WordPress Image Plugins',rv2:'Images are one of the most important parts of your website’s user experience. If you have text-heavy content…'},
+            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            // {ttl:'Getting help',img:'url',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'},
+            // {ttl:'WooCommerce',img:'url2',ttl2:'hhhh',ttl3:'iiii',by:'name',dt:'date'}   
+           ],
+  slug: "blog"
+              
+  
+}
+];
+export const home ={
+  
+  slug: "home"
+              
+  
+}
+
+
+
+
 ---
+<ZetaDoc Heading={doc.Heading} title={doc.DocList[0].title} icon={doc.DocList[0].icon} article={doc.DocList[0].article} />

@@ -4,50 +4,59 @@ import Doc from '../components/ZetaPages/ZetaDoc.astro';
 import Blog from '../components/ZetaPages/ZetaBlog.astro';
 import Cont from '../components/ZetaPages/BlogContent.astro'; 
 
-import { ContData } from '../components/DemoBackend.astro'; // Correct way to import the array
+
+import { ContData, blg, doc ,home} from '../components/DemoBackend.astro';
 import MainLayout from '../layouts/ZetaMainLayOut.astro';
 import DyLayout from '../layouts/DynamicPgLayOut.astro'; 
 
+// Dynamic route mapping
+const componentMap = {
+  [home.slug]: Home, // home page
+  [doc.slug]: Doc, // doc page
+  [blg[0].slug]: Blog, // blog page
+  ...Object.fromEntries(ContData.map((data) => [data.slug, Cont])) // content pages
+};
 
 export async function getStaticPaths() {
   const pages = [
-    { slug: "", component: Home },  
-    { slug: "doc", component: Doc },       
-    { slug: "blog", component: Blog },   
+    { slug: home.slug },  
+    { slug: doc.slug },       
+    { slug: blg[0].slug }, 
   ];
 
   // Map over ContData and add each item dynamically
   const contentPages = ContData.map((data) => ({
-    slug: data.slug,
-    component: Cont
+    slug: data.slug
   }));
 
   // Combine pages and contentPages into one array
   const allPages = [...pages, ...contentPages];
 
-  const staticPaths = allPages.map(({ slug, component }) => {
-    return {
-      params: { slug },
-      props: { component },
-    };
-  });
+  const staticPaths = allPages.map(({ slug }) => ({
+    params: { slug }
+  }));
 
   return staticPaths;
 }
 
 const { slug } = Astro.params;
-const { component: PageComponent } = Astro.props;
+
+// Retrieve the component from the map based on the slug
+const PageComponent = componentMap[slug];
 
 // Determine which layout to use
 const isContentPage = slug?.startsWith("blog/content");
-
 ---
-{isContentPage ? (
-  <DyLayout>
-    <PageComponent />
-  </DyLayout>
+{PageComponent ? (
+  isContentPage ? (
+    <DyLayout>
+      <PageComponent />
+    </DyLayout>
+  ) : (
+    <MainLayout>
+      <PageComponent />
+    </MainLayout>
+  )
 ) : (
-  <MainLayout>
-    <PageComponent />
-  </MainLayout>
+  <p>Page not found</p>
 )}
