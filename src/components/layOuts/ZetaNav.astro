@@ -2,26 +2,24 @@
 import '../../styles/zeta.css'
 const {extra_feature}=Astro.props;
 const {extra1}=Astro.props;
-
-import Dark from '../Buttons/DarkMode.astro'
-
+const {doc,blog,home}=Astro.props;
 
 const nav1 = [
   { name: 'zeta_logo', url: '/', style: 'font-bold text-xl' },
   { name: 'shop', url: '', style: 'text-lg' },
   { name: 'Help Center', url: '/help', style: 'text-lg', dropdown: [
-    { name: 'Documentation', url: '/doc' },
+    { name: 'Documentation', url: `${doc}` }, 
     { name: 'Open a Ticket', url: '/open-ticket' },
     { name: 'Help Desk', url: '/help-desk' }
   ]},
-  { name: 'Blog', url: '/blog', style: 'text-lg' },
+  { name: 'Blog', url: `${blog}`, style: 'text-lg' },
   { name: 'Contact', url: '/contact', style: 'text-lg' },
   { name: 'My Account', url: '/account', style: 'text-lg' },
 ];
 
 console.log("nav pg")
 ---
-<!-- <a href="/">Home</a> | -->
+<a href=`${home}`></a> |
 
 
 <nav class="bg-blue-600 text-white p-4 z-50">

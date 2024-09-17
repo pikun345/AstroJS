@@ -4,7 +4,9 @@ import BaseHead from '../components/layOuts/ZetaHead.astro';
 import Navbar from '../components/layOuts/ZetaNav.astro'
 import Footer from '../components/layOuts/ZetaFooter.astro'
 const {extra_feature}=Astro.props;
-
+import { doc } from '../pages/DemoBackend.astro';
+import { blg } from '../pages/DemoBackend.astro';
+import { home } from '../pages/DemoBackend.astro';
 
 ---
 
@@ -16,7 +18,7 @@ const {extra_feature}=Astro.props;
   <body class="flex flex-col min-h-screen">
 
     <!-- Navigation Bar -->
-    <Navbar/>
+    <Navbar doc={doc.slug} blog={blg[0].slug} home={home.slug}/>
   
     <!-- Main Content Area -->
     <main class="flex-grow bg-gray-100">

@@ -1,163 +1,35 @@
 ---
-import MainLayout from '../../layouts/ZetaMainLayOut.astro';
+// import MainLayout from '../../layouts/ZetaMainLayOut.astro';
 import '../../styles/zeta.css';
-const {Heading,title,icon,article}=Astro.props;
-console.log("hoo",Heading)
-
+ const {doc}=Astro.props;
+ console.log("hoo",doc.DocList[1].title);
 
 
 ---
-<!-- <MainLayout> -->
 
     <!-- card shown -->
     <div class="p-16">
-        <h1 class="font-bold text-gray-950 mb-7 text-[50px]"> {Heading} </h1>
-
+        <h1 class="font-bold text-gray-950 mb-7 text-[50px]"> {doc.Heading} </h1>
+    
         <div class="grid grid-cols-3 gap-7 mb-28 ">
-          
-        
-            <div class="flex items-start space-x-4">
-              <div>
-               <img src={icon} alt="img1" class="w-10 h-10">
-                  </div>
-        <div class="relative group w-max">
-            <span class="block group-hover:translate-y-6 transition-transform">
-                <h2 class="truncate max-w-48">{title}</h2>
-            </span>
-            <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-                 {article}
-            </h5>
+            {doc.DocList.map((item) => (
+                <div class="flex items-start space-x-4">
+                    <div>
+                        <img src={item.icon} alt="img" class="w-10 h-10">
+                    </div>
+                    <div class="relative group w-max">
+                        <span class="block group-hover:translate-y-6 transition-transform">
+                            <h2 class="truncate h-7 text-black max-w-48">{item.title}</h2>
+                        </span>
+                        <h5 class="block absolute text-black left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            {item.article}
+                        </h5>
+                    </div>
+                </div>
+            ))}
         </div>
     </div>
     
-    <!--  -->
-    <div class="flex items-start space-x-4">
-      <div>
-       <img src={icon} alt="img1" class="w-10 h-10">
-          </div>
-<div class="relative group w-max">
-    <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{title}</h2>
-    </span>
-    <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {article}
-    </h5>
-</div>
-</div>
-
-    
-    
-    <!--  -->
-    <div class="flex items-start space-x-4">
-      <div>
-       <img src={icon} alt="img1" class="w-10 h-10">
-          </div>
-<div class="relative group w-max">
-    <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{title}</h2>
-    </span>
-    <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {article}
-    </h5>
-</div>
-</div>
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <!--  -->
-    <div class="flex items-start space-x-4">
-      <div>
-       <img src={icon} alt="img1" class="w-10 h-10">
-          </div>
-<div class="relative group w-max">
-    <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{title}</h2>
-    </span>
-    <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {article}
-    </h5>
-</div>
-</div>
-
-    
-    
-    <!--  -->
-    <div class="flex items-start space-x-4">
-      <div>
-       <img src={icon} alt="img1" class="w-10 h-10">
-          </div>
-<div class="relative group w-max">
-    <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{title}</h2>
-    </span>
-    <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {article}
-    </h5>
-</div>
-</div>
-
-    
-    <!--  -->
-    <div class="flex items-start space-x-4">
-      <div>
-       <img src={icon} alt="img1" class="w-10 h-10">
-          </div>
-<div class="relative group w-max">
-    <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{title}</h2>
-    </span>
-    <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {article}
-    </h5>
-</div>
-</div>
-
-    <!--  -->
-    <div class="flex items-start space-x-4">
-      <div>
-       <img src={icon} alt="img1" class="w-10 h-10">
-          </div>
-<div class="relative group w-max">
-    <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{title}</h2>
-    </span>
-    <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {article}
-    </h5>
-</div>
-</div>
-
-    
-    
-    
-    <!--  -->
-    <div class="flex items-start space-x-4">
-      <div>
-       <img src={icon} alt="img1" class="w-10 h-10">
-          </div>
-<div class="relative group w-max">
-    <span class="block group-hover:translate-y-6 transition-transform">
-        <h2 class="truncate max-w-48">{title}</h2>
-    </span>
-    <h5 class="block absolute left-0 top-0 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-         {article}
-    </h5>
-</div>
-</div>
-
-    
-    </div>
-    
-    </div>
   
-  <!-- </MainLayout> -->
   
   
