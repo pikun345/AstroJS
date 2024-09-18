@@ -1,0 +1,108 @@
+---
+import '../../styles/zeta.css';
+import Holding from '../Logo/Holding.astro';
+---
+
+
+<div class="mb-36">
+  <Holding text="Open a Ticket"/>
+
+  <form class="flex flex-col w-auto space-y-4 p-7">
+      <h1 class="text-3xl font-bold text-black">Need help with something?</h1>
+      <h5 class="">Our tech support team is eager to help you resolve issues you are facing with any ZetaMatic plugins you purchased.</h5>
+      <h5 class="">Please fill in the following form to open a support ticket:</h5>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex flex-col space-y-2">
+              <h5>Your Name</h5>
+              <input type="text" name="name" class="border p-2" required>
+          </div>
+          <div class="flex flex-col space-y-2">
+              <h5>Email</h5>
+              <input type="email" name="email" class="border p-2" required>
+          </div>
+          <div class="flex flex-col space-y-2">
+              <h5>Product</h5>
+              <input type="text" name="product" class="border p-2" required>
+          </div>
+          <div class="flex flex-col space-y-2">
+              <h5>Purchase Code / License Key</h5>
+              <input type="text" name="licenseKey" class="border p-2" required>
+          </div>
+          <div class="col-span-2 flex flex-col space-y-2">
+              <h5>Subject</h5>
+              <input type="text" name="subject" class="border p-2 w-full" required>
+          </div>
+          <div class="col-span-2 flex flex-col space-y-2">
+              <h5>Describe your query</h5>
+              <input type="text" name="query" class="border p-2 w-full h-32" required>
+          </div>
+          <div>
+            <button type="submit" class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+              Send
+            </button>
+          </div>
+      </div>
+  </form>
+</div>
+
+<script lang="ts">
+  // Function to validate email format
+  function validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Handle form submission
+  function handleSubmit(event: Event): void {
+    event.preventDefault();
+
+    const nameInput = document.querySelector<HTMLInputElement>('input[name="name"]');
+    const emailInput = document.querySelector<HTMLInputElement>('input[name="email"]');
+    const productInput = document.querySelector<HTMLInputElement>('input[name="product"]');
+    const licenseKeyInput = document.querySelector<HTMLInputElement>('input[name="licenseKey"]');
+    const subjectInput = document.querySelector<HTMLInputElement>('input[name="subject"]');
+    const queryInput = document.querySelector<HTMLInputElement>('input[name="query"]');
+
+    let isValid = true;
+    const errorMessages: string[] = [];
+
+    if (!nameInput?.value.trim()) {
+      errorMessages.push("Please enter your name.");
+      isValid = false;
+    }
+    if (!emailInput?.value.trim() || !validateEmail(emailInput.value)) {
+      errorMessages.push("Please enter a valid email address.");
+      isValid = false;
+    }
+    if (!productInput?.value.trim()) {
+      errorMessages.push("Please enter the product name.");
+      isValid = false;
+    }
+    if (!licenseKeyInput?.value.trim()) {
+      errorMessages.push("Please enter the purchase code or license key.");
+      isValid = false;
+    }
+    if (!subjectInput?.value.trim()) {
+      errorMessages.push("Please enter the subject.");
+      isValid = false;
+    }
+    if (!queryInput?.value.trim()) {
+      errorMessages.push("Please describe your query.");
+      isValid = false;
+    }
+
+    if (isValid) {
+      alert("Form submitted successfully!");
+      // Add your form submission logic here (e.g., sending data to the server)
+    } else {
+      alert(errorMessages.join("\n"));
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    form?.addEventListener("submit", handleSubmit);
+  });
+</script>
+

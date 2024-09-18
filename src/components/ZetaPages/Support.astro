@@ -1,0 +1,56 @@
+---
+import '../../styles/zeta.css';
+---
+<div>
+  
+<div class="min-h-screen flex items-center justify-center bg-gray-100 mb-40">
+    <!-- Main Container -->
+    <div class="flex w-full max-w-4xl bg-white rounded-lg shadow-lg">
+      <!-- Left Section (Purple Background) -->
+      <div class="w-1/2 bg-gradient-to-b from-purple-800 to-purple-600 p-8 text-white rounded-l-lg">
+        <img src="https://zetamatic.com/wp-content/uploads/2019/04/logo-white.png" alt="ZetaMatic Support Logo" class="w-32 mb-6">
+        <h2 class="text-2xl font-semibold">Welcome to ZetaMatic Support</h2>
+        <p class="mt-4">Please login using the form</p>
+        <button class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded-full mt-8">
+          Create an account
+        </button>
+      </div>
+  
+      <!-- Right Section (Form) -->
+      <div class="w-1/2 p-8">
+        <h2 class="text-2xl font-semibold mb-6">Login</h2>
+        <form action="#" method="POST" class="space-y-6">
+          <!-- Email Field -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+          </div>
+  
+          <!-- Password Field -->
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" id="password" name="password" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+          </div>
+  
+          <!-- Remember Me & Forgot Password -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+              <label for="remember" class="ml-2 block text-sm text-gray-900">Remember me</label>
+            </div>
+            <div>
+              <a href="#" class="text-sm text-purple-600 hover:underline">Forgot Password?</a>
+            </div>
+          </div>
+  
+          <!-- Submit Button -->
+          <div>
+            <button type="submit" class="w-full bg-gray-400 text-white font-semibold py-3 rounded-lg hover:bg-gray-500">
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

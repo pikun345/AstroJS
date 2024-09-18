@@ -7,6 +7,12 @@ const {extra_feature}=Astro.props;
 import { doc } from '../pages/DemoBackend.astro';
 import { blg } from '../pages/DemoBackend.astro';
 import { home } from '../pages/DemoBackend.astro';
+import { contact } from '../pages/DemoBackend.astro';
+import { account } from '../pages/DemoBackend.astro';
+import { shop } from '../pages/DemoBackend.astro';
+import { ticket } from '../pages/DemoBackend.astro';
+import { support } from '../pages/DemoBackend.astro';
+
 
 ---
 
@@ -18,7 +24,7 @@ import { home } from '../pages/DemoBackend.astro';
   <body class="flex flex-col min-h-screen">
 
     <!-- Navigation Bar -->
-    <Navbar doc={doc.slug} blog={blg[0].slug} home={home.slug}/>
+    <Navbar doc={doc.slug} blog={blg[0].slug} home={home.slug} contact={contact.slug} account={account.slug} shop={shop.slug} ticket={ticket.slug} support={support.slug}/>
   
     <!-- Main Content Area -->
     <main class="flex-grow bg-gray-100">

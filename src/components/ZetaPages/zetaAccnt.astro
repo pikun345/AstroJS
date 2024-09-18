@@ -1,0 +1,36 @@
+---
+import '../../styles/zeta.css';
+import Holding from '../Logo/Holding.astro';
+---
+<div>
+    <Holding text="account"/>
+    <div class="flex items-center justify-center mb-4 bg-gray-100">
+        <div class="bg-white shadow-md rounded-lg p-7 m-7">
+            <h4 class="mb-5 text-center text-xl font-bold">Log into Your Account</h4>
+            
+            <h4 class="">Username or Email</h4>
+            <input type="text" class="border mt-2 w-full p-2 rounded-md" placeholder="Enter mail">
+            
+            <h4 class="mt-4">Password</h4>
+            <input type="password" class="border mt-2 w-full p-2 rounded-md" placeholder="Enter password">
+            
+            <div class="mt-4">
+                <input type="checkbox"> <span>Remember Me</span>
+            </div>
+            
+            <button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4 w-full">
+                Login
+            </button>
+            
+            <a href=""><h4 class="mt-4 hover:underline text-center">Lost Password?</h4></a>
+        </div>
+    
+       
+    </div>
+
+    <div class="flex items-center justify-center mb-40">
+        <h4 class="">New User?</h4>
+        <a href=""><h4 class="ml-2 hover:underline">Register Here</h4></a>
+    </div>
+
+</div>

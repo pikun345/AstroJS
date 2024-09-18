@@ -3,8 +3,13 @@ import Home from "../components/tempLets/Home.astro";
 import Doc from "../components/ZetaPages/ZetaDoc.astro";
 import Blog from "../components/ZetaPages/ZetaBlog.astro";
 import Cont from "../components/ZetaPages/BlogContent.astro";
+import ZetaContact from "../components/ZetaPages/ZetaContact.astro";
+import ZetaAccnt from "../components/ZetaPages/zetaAccnt.astro";
+import ZetsShop from "../components/ZetaPages/ZetsShop.astro";
+import OpenTkt from "../components/ZetaPages/openTkt.astro";
+import Support from "../components/ZetaPages/Support.astro";
 
-import { ContData, blg, doc, home } from "./DemoBackend.astro";
+import { ContData, blg, doc, home, contact,account,shop,ticket,support} from "./DemoBackend.astro";
 import MainLayout from "../layouts/ZetaMainLayOut.astro";
 import DyLayout from "../layouts/DynamicPgLayOut.astro";
 
@@ -16,13 +21,32 @@ const componentMap = {
   [home.type]: Home, // home page
   [doc.type]: Doc, // doc page
   [blg[0].type]: Blog, // blog page
+  [contact.type]: ZetaContact,
+  [account.type]: ZetaAccnt,
+  [shop.type]: ZetsShop,
+  [ticket.type]: OpenTkt,
+  [support.type]: Support,
+
+
+
+
   ...Object.fromEntries(ContData.map((data) => [data.type, Cont])), // content pages
 };
 export async function getStaticPaths() {
   const pages = [
     { slug: home.slug, type: home.type },
     { slug: doc.slug, type: doc.type },
-    { slug: blg[0].slug, type: blg[0].type }
+    { slug: blg[0].slug, type: blg[0].type },
+    { slug: contact.slug, type: contact.type },
+    { slug: account.slug, type: account.type },
+    { slug: shop.slug, type: shop.type },
+    { slug: ticket.slug, type: ticket.type },
+    { slug: support.slug, type: support.type }
+
+
+
+
+
   ];
 
   // Map over ContData and add each item dynamically

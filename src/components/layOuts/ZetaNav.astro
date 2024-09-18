@@ -2,22 +2,20 @@
 import '../../styles/zeta.css'
 const {extra_feature}=Astro.props;
 const {extra1}=Astro.props;
-const {doc,blog,home}=Astro.props;
+const {doc,blog,home,contact,account,shop,ticket,support}=Astro.props;
 
 const nav1 = [
-  { name: 'zeta_logo', url: '/', style: 'font-bold text-xl' },
-  { name: 'shop', url: '', style: 'text-lg' },
+  { name: 'shop', url: `${shop}`, style: 'text-lg' },
   { name: 'Help Center', url: '/help', style: 'text-lg', dropdown: [
     { name: 'Documentation', url: `${doc}` }, 
-    { name: 'Open a Ticket', url: '/open-ticket' },
-    { name: 'Help Desk', url: '/help-desk' }
+    { name: 'Open a Ticket', url:`${ticket}`},
+    { name: 'Help Desk', url:`${support}`}
   ]},
   { name: 'Blog', url: `${blog}`, style: 'text-lg' },
-  { name: 'Contact', url: '/contact', style: 'text-lg' },
-  { name: 'My Account', url: '/account', style: 'text-lg' },
+  { name: 'Contact', url: `${contact}`, style: 'text-lg' },
+  { name: 'My Account', url: `${account}`, style: 'text-lg' },
 ];
 
-console.log("nav pg")
 ---
 <a href=`${home}`></a> |
 
@@ -26,14 +24,14 @@ console.log("nav pg")
   <div class="container mx-auto flex items-center justify-between glow-effect">
     {/* Logo */}
     <div class="flex-shrink-0">
-      <a href={nav1[0].url} class={`underline-animation hover:text-gray-300 ${nav1[0].style}`}>
-        {nav1[0].name}
+      <a href="url" class={`underline-animation hover:text-gray-300 ${nav1[0].style}`}>
+        Zeta Logo
       </a>
     </div>
     {console.log("extra")}
     {/* Centered Navigation Items */}
     <div class="flex-1 flex justify-center space-x-4">
-      {nav1.slice(1, -1).map(item => (
+      {nav1.map(item => (
         <div class={`relative ${item.dropdown ? 'group' : ''}`}>
           {item.dropdown ? (
             <div class={`cursor-pointer underline-animation hover:text-gray-300 glow-effect ${item.style}`}>
