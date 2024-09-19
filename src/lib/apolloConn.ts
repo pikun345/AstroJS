@@ -3,7 +3,7 @@
 import { ApolloClient, InMemoryCache } from "../../node_modules/@apollo/client/index";
 
 const client = new ApolloClient({
-  uri: 'https://api.github.com/graphql',
+  uri: 'https://api.staging.zetamatic.com/graphql',
   cache: new InMemoryCache(),
   
 });

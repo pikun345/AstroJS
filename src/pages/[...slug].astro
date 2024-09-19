@@ -17,12 +17,12 @@ import MainLayout from "../layouts/ZetaMainLayOut.astro";
 
 //type matching with component 
 const componentMap = {
-  ["Home"]: Home, // home page
-  ["Doc"]: Doc, // doc page
-  ["Blog"]: Blog, // blog page
+  ["Home"] : Home, // home page
+  ["Doc "] : Doc, // doc page
+  ["Blog"] : Blog, // blog page
   ["contact"]: ZetaContact,
   ["account"]: ZetaAccnt,
-  ["shop"]: ZetsShop,
+  ["shop"] : ZetsShop,
   ["ticket"]: OpenTkt,
   ["support"]: Support,
   ["content"]: Cont,
@@ -78,27 +78,15 @@ const { type } = Astro.props;
 
 
 console.log(componentMap[0]);
-var PageComponent;
 
-//assgining the right compo to pagecompo
-for(let key in componentMap)
-{
-  if(key===type){
-    PageComponent=componentMap[key];
-    console.log("key=",key);
-    console.log("type=",type);
 
-    break;
-  }
-  else{
-    console.log("ihii");
-    
-    PageComponent=null;
-  }
+const PageComponent = Object.keys(componentMap).find((key) => key === type) 
+  ? componentMap[type] 
+  : null;
 
 
 
-}
+
 
 ---
 

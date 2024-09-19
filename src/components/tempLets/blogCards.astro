@@ -2,40 +2,42 @@
 import '../../styles/zeta.css';
 import { blg } from '../../pages/DemoBackend.astro';
 const {content}=Astro.props;
-console.log("shltimn",content)
+console.log("shltimn",content);
+import { fetchData } from '../../pages/graph.astro';
+const data=await fetchData();
 ---
-{blg[0].Blogs.map((blogItem, index) => (
+{data.posts.nodes.map((blogItem, index) => (
     <div class={`relative group ${index >= 3 ? 'hidden' : ''}`}>
       <a href={content}>
-        <img src={blogItem.img} alt="Image" class="w-96 h-52 object-cover">
+        <img src={blogItem.uri} alt="Image" class="w-96 h-52 object-cover">
         <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
           <!-- Centered "Read More" text -->
           <div class="flex items-center justify-center flex-grow">
-            <h5 class="font-bold text-white"> {blogItem.ttl2}</h5>
+            <h5 class="font-bold text-white"> {blogItem.title}</h5>
           </div>
           <!-- "4 min read" text at the bottom -->
           <div class="flex justify-center">
-            <h5 class="font-bold text-white"> {blogItem.ttl3}</h5>
+            <h5 class="font-bold text-white"> {blogItem.excerpt}</h5>
           </div>
         </div>
       </a>
 
       <div class="flex flex-col w-96 h-60 mt-2">
         <!-- Title -->
-        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blogItem.ttl}</h3>
+        <h3 class="text-lg font-bold mt-4 mb-4 text-green-500 hover:text-gray-950">{blogItem.title}</h3>
         <!-- Description -->
         <p class="mt-1 mb-1 hover:text-gray-500 text-black font-bold text-lg">
-          {blogItem.rv}
+          {blogItem.title}
         </p>
         <p class="text-sm text-gray-600 mt-4 mb-3">
-          {blogItem.rv2}
+          {blogItem.title}
         </p>
         <!-- Author and Date -->
         <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
           <span>BY</span>
-          <span class="font-bold hover:text-gray-500 text-black">{blogItem.by}</span>
+          <span class="font-bold hover:text-gray-500 text-black">{blogItem.title}</span>
           <span>•</span>
-          <span> {blogItem.dt} </span>
+          <span> {blogItem.title} </span>
         </div>
       </div>
     </div>

@@ -1,30 +1,124 @@
 ---
 import client from '../lib/apolloConn';
+import '../styles/zeta.css';
 import {gql} from "../../node_modules/@apollo/client/index"
-const GET_DATA = gql `query GetData
-                   {
-                     data1
-                       { id 
-                        title
-                        description }
-                    }`;
+const GET_DATA = gql `query Posts {
+    posts{
+      nodes {
+        id
+    title
+    slug
+    date
+    uri
+    excerpt
+    commentStatus
+    categories {
+      nodes {
+        id
+        name
+        uri
+        slug
+      }
+    }
+    tags {
+      nodes {
+        id
+        name
+        uri
+        slug
+        count
+      }
+    }
+    author {
+      node {
+        id
+        name
+        firstName
+        lastName
+        uri
+        avatar {
+          url
+        }
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+        }
+      }
+    }
+    content(format: RENDERED)
+    nextPost {
+      uri
+      title
+    }
+    previousPost {
+      uri
+      title
+    }
+    featuredImage {
+      node {
+        altText
+        sourceUrl
+        srcSet
+        mediaItemUrl
+        mediaDetails {
+          sizes {
+            name
+            sourceUrl
+            width
+            height
+            mimeType
+          }
+        }
+      }
+    }
+    seo {
+      title
+      description
+      canonicalUrl
+      focusKeywords
+      openGraph {
+        url
+        title
+        siteName
+        description
+        image {
+          secureUrl
+          url
+          width
+          type
+          height
+        }
+        locale
+        type
+      }
+      jsonLd {
+        raw
+      }
+    }
+
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+                 `;
 
 let data :any= null;
 
-try 
-{
-     const response = await client.query({ query: GET_DATA, }); 
-     data = response.data; 
+export async function fetchData() {
+  try {
+    const response = await client.query({ query: GET_DATA });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching GraphQL data:', error);
+    return null;
+  }
 }
-catch(error) 
-{
-     console.error("Error fetching GraphQL data:", error); 
-}
-
-
-
-
-
+// ttl,excerpt
 ---
 
 <html> 
@@ -33,10 +127,25 @@ catch(error)
     </head> 
     <body>
          <h1>GraphQL Data:</h1> 
-         {data ? ( <ul> {data.data1.map((item) => ( 
+         {data ? ( <ul> {data.posts.nodes.map((item) => ( 
             <li> 
-              <h2>{item.title}</h2> 
-              <p>{item.description}</p> 
+              <h2>id {item.id}</h2>
+              <h2>title {item.title}</h2>
+              <h2>slug {item.slug}</h2>
+              <h2>date {item.date}</h2>
+              <h2>uri {item.uri}</h2>
+              <h2> excerpt{item.excerpt}</h2>
+              <h2>commenstatys {item.commentStatus}</h2>
+              <br>
+              
+    
+    
+    
+    
+    
+     
+         
+
             </li> ))} 
             </ul> ) : ( <p>Error fetching data or no data available.</p> )}
      </body> 
