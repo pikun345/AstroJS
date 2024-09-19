@@ -1,0 +1,80 @@
+---
+import '../../styles/zeta.css';
+import {ContData} from '../../pages/DemoBackend.astro';
+
+
+---
+<div class="relative p-8 ml-7 mt-11 mb-36 mr-7" style="bottom: 3rem;">
+
+    <div class="relative flex items-center justify-center">
+     <div>
+       <img src={ContData[0].info[0].img} alt="img1" height="800" width="1200" class="relative z-10">
+     </div>
+     
+     
+     
+   </div>
+
+   <div class="absolute -bottom-48 left-40 z-50 mb-12 mt-16 p-4 text-blue-600 font-bold">
+     <!--  -->
+
+     <div class="absolute bottom-48 -left-3 p-5 mb-5">
+       <ul class="flex flex-row">
+         <div class="bg-gray-500 bg-opacity-50 m-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
+           <li class="m-2 bg-opacity-50 text-white font-semibold">
+             <a href="/zetaDynPg/blog_fol/content/lists/ecom">{ContData[0].info[0].lst.itm1}</a>
+           </li>
+         </div>
+         
+         <div class="bg-gray-500 bg-opacity-50 m-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
+           <li class="m-2 bg-opacity-50 text-white font-semibold">
+             <a href="/zetaDynPg/blog_fol/content/lists/wooComm">{ContData[0].info[0].lst.itm2}</a>
+           </li>
+         </div>
+
+         <div class="bg-gray-500 bg-opacity-50 m-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
+           <li class="m-2 bg-opacity-50 text-white font-semibold">
+             <a href="/zetaDynPg/blog_fol/content/lists/wordPress">{ContData[0].info[0].lst.itm3}</a>
+           </li>
+         </div>
+         
+         
+         
+       </ul>
+     </div>
+     <!--  -->
+     <div>
+       <span class="block text-4xl leading-relaxed break-words bg-green-400">
+         Automate Your Work with the Top 7
+       </span>
+       <span class="block text-4xl leading-relaxed break-words bg-green-400 mt-4">
+         WordPress Automation Plugins
+       </span>
+       <span class="block text-4xl leading-relaxed break-words bg-green-400 mt-4">
+         and Tools
+       </span>
+
+     </div>
+
+     <div class="absolute mb-3 mt-3  text-blue-600">
+       <div class="flex items-center space-x-4  flex-row">
+         <div class="mb-5">
+           <a href="">        
+             <img src="https://secure.gravatar.com/avatar/751fa281ec8596fc14bd240e297dab56?s=26&d=mm&r=g" alt="profile pic" class="rounded-full" height="30" width="30">
+           </a>
+         </div>
+         <div class="flex flex-row">
+           <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
+             <span>BY</span>
+             <span class="font-bold hover:text-gray-500 text-black">{ContData[0].info[0].author}</span>
+             <span>•</span>
+             <span> {ContData[0].info[0].dt} </span>
+             <span> {ContData[0].info[0].time} </span>
+
+         </div>
+         </div>
+       </div>
+     </div>
+    
+   </div>
+</div>

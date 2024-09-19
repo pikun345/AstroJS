@@ -8,24 +8,25 @@ import ZetaAccnt from "../components/ZetaPages/zetaAccnt.astro";
 import ZetsShop from "../components/ZetaPages/ZetsShop.astro";
 import OpenTkt from "../components/ZetaPages/openTkt.astro";
 import Support from "../components/ZetaPages/Support.astro";
+import BlogCards from "../components/tempLets/blogCards.astro";
 
 import { ContData, blg, doc, home, contact,account,shop,ticket,support} from "./DemoBackend.astro";
 import MainLayout from "../layouts/ZetaMainLayOut.astro";
-import DyLayout from "../layouts/DynamicPgLayOut.astro";
+
+
 
 //type matching with component 
 const componentMap = {
   ["Home"]: Home, // home page
   ["Doc"]: Doc, // doc page
   ["Blog"]: Blog, // blog page
-  ["Contact"]: ZetaContact,
+  ["contact"]: ZetaContact,
   ["account"]: ZetaAccnt,
   ["shop"]: ZetsShop,
   ["ticket"]: OpenTkt,
   ["support"]: Support,
-  ["blog/content"]: Cont,
-  // ["blog/content2"]: Cont,
-  // ["blog/content3"]: Cont,
+  ["content"]: Cont,
+ 
 
 
   // ["null"]:errPg;
@@ -43,13 +44,16 @@ export async function getStaticPaths() {
     { slug: account.slug, type: account.type },
     { slug: shop.slug, type: shop.type },
     { slug: ticket.slug, type: ticket.type },
-    { slug: support.slug, type: support.type }
+    { slug: support.slug, type: support.type },
+    { slug: ContData[0].slug, type: ContData[0].type }
+
 
 
 
 
 
   ];
+
 
   // Map over ContData and add each item dynamically
   const contentPages = ContData.map((data) => ({
@@ -81,10 +85,14 @@ for(let key in componentMap)
 {
   if(key===type){
     PageComponent=componentMap[key];
-    console.log("cmp=",PageComponent);
+    console.log("key=",key);
+    console.log("type=",type);
+
     break;
   }
   else{
+    console.log("ihii");
+    
     PageComponent=null;
   }
 
@@ -97,7 +105,7 @@ for(let key in componentMap)
 {
   PageComponent ? (
       <MainLayout>
-        <PageComponent doc={doc} blog={blg}/>
+        <PageComponent doc={doc} blog={blg} content={ContData[0].slug} />
         
       </MainLayout>
     
