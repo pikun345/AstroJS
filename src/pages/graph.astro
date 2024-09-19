@@ -107,16 +107,18 @@ const GET_DATA = gql `query Posts {
   }
                  `;
 
+
 let data :any= null;
 
-export async function fetchData() {
-  try {
-    const response = await client.query({ query: GET_DATA });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching GraphQL data:', error);
-    return null;
-  }
+try 
+{
+     const response = await client.query({ query: GET_DATA, }); 
+     data = response.data; 
+     console.log("data=",data)
+}
+catch(error) 
+{
+     console.error("Error fetching GraphQL data:", error); 
 }
 // ttl,excerpt
 ---

@@ -3,8 +3,10 @@ import '../../styles/zeta.css';
 import { blg } from '../../pages/DemoBackend.astro';
 const {content}=Astro.props;
 console.log("shltimn",content);
-import { fetchData } from '../../pages/graph.astro';
-const data=await fetchData();
+
+
+
+
 ---
 {data.posts.nodes.map((blogItem, index) => (
     <div class={`relative group ${index >= 3 ? 'hidden' : ''}`}>
