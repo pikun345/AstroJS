@@ -13,28 +13,30 @@ import { ContData, blg, doc, home, contact,account,shop,ticket,support} from "./
 import MainLayout from "../layouts/ZetaMainLayOut.astro";
 import DyLayout from "../layouts/DynamicPgLayOut.astro";
 
-console.log("hii",home.slug);
-console.log("hii",home.type);
-
 //type matching with component 
 const componentMap = {
-  [home.type]: Home, // home page
-  [doc.type]: Doc, // doc page
-  [blg[0].type]: Blog, // blog page
-  [contact.type]: ZetaContact,
-  [account.type]: ZetaAccnt,
-  [shop.type]: ZetsShop,
-  [ticket.type]: OpenTkt,
-  [support.type]: Support,
+  ["Home"]: Home, // home page
+  ["Doc"]: Doc, // doc page
+  ["Blog"]: Blog, // blog page
+  ["Contact"]: ZetaContact,
+  ["account"]: ZetaAccnt,
+  ["shop"]: ZetsShop,
+  ["ticket"]: OpenTkt,
+  ["support"]: Support,
+  ["blog/content"]: Cont,
+  // ["blog/content2"]: Cont,
+  // ["blog/content3"]: Cont,
+
+
+  // ["null"]:errPg;
 
 
 
 
-  ...Object.fromEntries(ContData.map((data) => [data.type, Cont])), // content pages
 };
 export async function getStaticPaths() {
   const pages = [
-    { slug: home.slug, type: home.type },
+    { slug: home.slug, type:home.type },
     { slug: doc.slug, type: doc.type },
     { slug: blg[0].slug, type: blg[0].type },
     { slug: contact.slug, type: contact.type },
@@ -60,36 +62,45 @@ export async function getStaticPaths() {
 
   // Generate static paths (passing both slug and type in params or props)
   const staticPaths = allPages.map(({ slug, type }) => ({
-    params: { slug },   // Only slug as param
-    props: { type }     // Pass type via props
+    params: { slug },   
+    props: { type }     
   }));
 
   console.log("Generated static paths:", staticPaths);
   return staticPaths;
 }
 const { slug } = Astro.params;
-const { type } = Astro.props;  // Access the type from props
+const { type } = Astro.props;  
 
-// Retrieve the component from the map based on the slug
-const PageComponent =componentMap[type] ;
-console.log("yto",type)
 
-// Determine which layout to use
-const isContentPage = slug?.startsWith("blog/content");
+console.log(componentMap[0]);
+var PageComponent;
+
+//assgining the right compo to pagecompo
+for(let key in componentMap)
+{
+  if(key===type){
+    PageComponent=componentMap[key];
+    console.log("cmp=",PageComponent);
+    break;
+  }
+  else{
+    PageComponent=null;
+  }
+
+
+
+}
+
 ---
 
 {
   PageComponent ? (
-    isContentPage ? (
-      <DyLayout>
-        <PageComponent  />
-      </DyLayout>
-    ) : (
       <MainLayout>
         <PageComponent doc={doc} blog={blg}/>
         
       </MainLayout>
-    )
+    
   ) : (
     <p>Page not found</p>
   )
