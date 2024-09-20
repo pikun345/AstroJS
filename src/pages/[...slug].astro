@@ -14,6 +14,38 @@ import { ContData, blg, doc, home, contact,account,shop,ticket,support} from "./
 import MainLayout from "../layouts/ZetaMainLayOut.astro";
 
 
+// backend
+import client from '../lib/apolloConn';
+import '../../styles/zeta.css';
+import {gql} from "../../node_modules/@apollo/client/index"
+const GET_DATA = gql `query Posts {
+    posts{
+      nodes {
+        id
+    title
+    slug
+    date
+    uri
+      }`
+
+
+let data :any= null;
+
+try 
+{
+     const response = await client.query({ query: GET_DATA, }); 
+     data = response.data; 
+}
+catch(error) 
+{
+     console.error("Error fetching GraphQL data:", error); 
+}
+
+
+
+//
+
+
 
 //type matching with component 
 const componentMap = {
@@ -45,20 +77,14 @@ export async function getStaticPaths() {
     { slug: shop.slug, type: shop.type },
     { slug: ticket.slug, type: ticket.type },
     { slug: support.slug, type: support.type },
-    { slug: ContData[0].slug, type: ContData[0].type }
-
-
-
-
-
-
-  ];
+];
 
 
   // Map over ContData and add each item dynamically
-  const contentPages = ContData.map((data) => ({
-    slug: data.slug,
-    type: data.type
+  const contentPages = data.posts.nodes.map((data) => ({
+    slug: data.uri,
+    type: "content"
+    
   }));
 
   // Combine pages and contentPages into one array
@@ -79,10 +105,8 @@ const { type } = Astro.props;
 
 console.log(componentMap[0]);
 
-
-const PageComponent = Object.keys(componentMap).find((key) => key === type) 
-  ? componentMap[type] 
-  : null;
+//type mapping 
+const PageComponent = Object.keys(componentMap).find((key) => key === type) ? componentMap[type] : null;
 
 
 

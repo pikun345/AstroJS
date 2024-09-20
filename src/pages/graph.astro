@@ -96,9 +96,9 @@ const GET_DATA = gql `query Posts {
       jsonLd {
         raw
       }
-    }
+     }
 
-      }
+    }
       pageInfo {
         hasNextPage
         endCursor
@@ -114,41 +114,39 @@ try
 {
      const response = await client.query({ query: GET_DATA, }); 
      data = response.data; 
-     console.log("data=",data)
+     console.log("mo data=",data.posts.nodes.categories.nodes.name)
 }
 catch(error) 
 {
      console.error("Error fetching GraphQL data:", error); 
 }
-// ttl,excerpt
+
+console.log("data11fbththth=",data);
+
+
+
 ---
 
-<html> 
-    <head> 
-        <title>GraphQL with Apollo Client</title> 
-    </head> 
-    <body>
-         <h1>GraphQL Data:</h1> 
-         {data ? ( <ul> {data.posts.nodes.map((item) => ( 
-            <li> 
-              <h2>id {item.id}</h2>
-              <h2>title {item.title}</h2>
-              <h2>slug {item.slug}</h2>
-              <h2>date {item.date}</h2>
-              <h2>uri {item.uri}</h2>
-              <h2> excerpt{item.excerpt}</h2>
-              <h2>commenstatys {item.commentStatus}</h2>
-              <br>
-              
+<html>
+  <body>
     
-    
-    
-    
-    
+    <div>
+      {data.posts.nodes.map((blogItem) => (
+        
+        <p>1 {blogItem.id} </p>
+        <p>2{blogItem.uri}</p>
+        <p>3{blogItem.slug}</p>
+        <p>4{blogItem.date}</p>
+        <p>5{blogItem.uri}</p>
+        <p>6{blogItem.excerpt}</p>
+        <p>7{blogItem.categories.nodes}</p>
+        <p>auth id={blogItem.author.node.id}</p>
      
-         
-
-            </li> ))} 
-            </ul> ) : ( <p>Error fetching data or no data available.</p> )}
-     </body> 
-</html> 
+        <br>
+        
+      ))}
+    </div>
+  </body>
+</html>
+        
+  

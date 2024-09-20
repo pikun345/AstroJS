@@ -1,4 +1,5 @@
-// Add this script to your project
+// Add this script to your projec
+
 document.addEventListener('DOMContentLoaded', () => {
     const scrollContainer = document.querySelector('.relative') as HTMLElement;
     let isDragging = false;
