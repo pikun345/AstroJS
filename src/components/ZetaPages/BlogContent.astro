@@ -1,19 +1,24 @@
 ---
 import DyLayout from '../../layouts/DynamicPgLayOut.astro';
 import '../../styles/zeta.css';
-import {ContData} from '../../pages/DemoBackend.astro';
 import ContentCard from '../tempLets/ContentCard.astro';
 import SrickyImg from '../tempLets/SrickyImg.astro';
 import GrayText from '../tempLets/grayText.astro';
 import SocialMedia from '../tempLets/SocialMedia.astro';
 import Realted from '../tempLets/Realted.astro';
+const {data}=Astro.props;
 
 ---
 
+{ data.posts.nodes.map((itm)=>(
+
+
    <div class="mb-64">   <!--main div -->
-    <ContentCard/>
- 
-  <div class="ml-48 mr-24 flex flex-row space-x-16 h-auto w-auto">
+
+   <ContentCard data={itm}/>
+
+
+<div class="ml-48 mr-24 flex flex-row space-x-16 h-auto w-auto">
    
    <SrickyImg/>
        <div>
@@ -53,7 +58,11 @@ import Realted from '../tempLets/Realted.astro';
 
   </div>
 
-   <!-- related post -->
+
+
+
+
+ <!-- related post -->
    <div class=" relative p-8 ml-7 mt-24 mr-7" style="bottom: 3rem;">
      <div class="text-black text-2xl mb-2 text-bold">
       <span>Related Post</span>
@@ -75,3 +84,11 @@ import Realted from '../tempLets/Realted.astro';
  
      </div>
 
+
+  
+
+
+
+   </div>
+
+   )) }

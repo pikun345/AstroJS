@@ -1,7 +1,5 @@
----
-import client from '../lib/apolloConn';
-import '../styles/zeta.css';
-import {gql} from "../../node_modules/@apollo/client/index"
+
+import {gql} from "../../../node_modules/@apollo/client/index"
 
 
 
@@ -109,4 +107,4 @@ import {gql} from "../../node_modules/@apollo/client/index"
     }
   }
 `;
----
+

@@ -1,6 +1,6 @@
 ---
 import '../../styles/zeta.css';
-const {blog,content}=Astro.props;
+const {data}=Astro.props;
 import BlogCards from '../tempLets/blogCards.astro';
 
 
@@ -9,11 +9,11 @@ import BlogCards from '../tempLets/blogCards.astro';
 ---
     <div>
       <div>
-        <h1 class="text-3xl font-bold text-black ml-10 mb-7 mt-7"> {blog[0].Text_part} </h1>
+        <h1 class="text-3xl font-bold text-black ml-10 mb-7 mt-7"> Lattest News </h1>
     </div>
      <div class="flex flex-col items-center mb-40 ml-11">
        <div id="divContainer" class="flex flex-wrap gap-2 mr-5">
-          <BlogCards content={content}/>
+          <BlogCards data={data}/>
         </div>
     <!-- button -->
         <div id="buttonContainer" class="relative mt-7 w-full flex justify-center">

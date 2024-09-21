@@ -1,38 +1,7 @@
 ---
 import '../../styles/zeta.css';
-import { blg } from '../../pages/DemoBackend.astro';
-const {content}=Astro.props;
-console.log("shltimn",content);
-import client from '../../lib/apolloConn';
-import {gql} from "../../../node_modules/@apollo/client/index"
-import {GET_DATA} from '../../lib/post.astro'
+const {data}=Astro.props;
 
-
-
-
-async function fetchDta(){
-let data :any= null;
-
-try 
-{
-     const response = await client.query({ query: GET_DATA, }); 
-     console.log("im fetch ")
-     return response.data; 
-}
-catch(error) 
-{
-     console.error("Error fetching GraphQL data:", error); 
-}
-
-
-
-
-
-}
-
-
-const data=await fetchDta();
-console.log("kilikili",data)
 
 
 
@@ -40,7 +9,7 @@ console.log("kilikili",data)
 ---
 {data.posts.nodes.map((blogItem, index) => (
     <div class={`relative group ${index >= 3 ? 'hidden' : ''}`}>
-      <a href={blogItem.uri}>
+      <a href={blogItem.slug}>
         <img src={blogItem.featuredImage} alt="00Image" class="w-96 h-52 object-cover">
 
         <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
