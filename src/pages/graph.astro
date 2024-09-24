@@ -1,149 +1,20 @@
 ---
-import client from '../typescript/backend/apolloConn';
-import '../styles/zeta.css';
-import {gql} from "../../node_modules/@apollo/client/index"
-const GET_DATA = gql `query Posts($limit: Int!){
-    posts(first: $limit){
-      
-      nodes{
-        id
-    title
-    slug
-    date
-    uri
-    excerpt
-    commentStatus
-    categories {
-      nodes {
-        id
-        name
-        uri
-        slug
-      }
-    }
-    tags {
-      nodes {
-        id
-        name
-        uri
-        slug
-        count
-      }
-    }
-    author {
-      node {
-        id
-        name
-        firstName
-        lastName
-        uri
-        avatar {
-          url
-        }
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-        }
-      }
-    }
-    content(format: RENDERED)
-    nextPost {
-      uri
-      title
-    }
-    previousPost {
-      uri
-      title
-    }
-    featuredImage {
-      node {
-        altText
-        sourceUrl
-        srcSet
-        mediaItemUrl
-        mediaDetails {
-          sizes {
-            name
-            sourceUrl
-            width
-            height
-            mimeType
-          }
-        }
-      }
-    }
-    seo {
-      title
-      description
-      canonicalUrl
-      focusKeywords
-      openGraph {
-        url
-        title
-        siteName
-        description
-        image {
-          secureUrl
-          url
-          width
-          type
-          height
-        }
-        locale
-        type
-      }
-      jsonLd {
-        raw
-      }
-     }
 
-    }
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-    }
-  }
- `;
 
- const limit = 2;
-let data = { posts: { nodes: [], pageInfo: { hasNextPage: false } } };//set every value to null and false initially
-let afterCursor = null;// used to define if any qury exist or not 
+//   let data :any= null;
 
-// let data :any= null;
-async function fetchData() {
-try  
-{    
-        const response = await client.query({ query: GET_DATA,  variables: { limit ,after: afterCursor} });  
-     // const response = await client.query({ query: GET_DATA,  variables: { limit } }); 
-     data = response.data; 
-     
-     console.log("mo data=",data.posts)
-}
-catch(error) 
-{
-     console.error("Error fetching GraphQL data:", error); 
-}
-}
 
-await fetchData();
 
-async function loadMore() {
-  if (data.posts.pageInfo.hasNextPage) {
-    afterCursor = data.posts.pageInfo.endCursor;
-    await fetchData();
-  }
-}
 
 ---
 
 <html>
+  
   <body>
-    
+
+    Data should be shown here
     <div id="container">
-      {data.posts.nodes.map((blogItem) => (
+      <!-- {data.posts.nodes.map((blogItem) => (
         
         <p>1 {blogItem.id} </p>
         <p>2{blogItem.title}</p>
@@ -159,31 +30,190 @@ async function loadMore() {
      
         <br>
         
-      ))}
+      ))} -->
     </div>
-
-   
-       <button id="loadBttn">Load More</button>
+     <button id="loadBttn">Load More</button>
       
-      
-      
-
   </body>
 </html>
-        
 <script>
 
-  const loadButton = document.getElementById("loadBttn");
-  loadButton.addEventListener("click",async()=>(
+import client from "../typescript/backend/apolloConn";
+import { gql } from "../../node_modules/@apollo/client";
+export const GET_DATA = gql `query Posts($limit: Int!,$after:String){
+  posts(first: $limit,after:$after){
+    
+    nodes{
+      id
+  title
+  slug
+  date
+  uri
+  excerpt
+  commentStatus
+  categories {
+    nodes {
+      id
+      name
+      uri
+      slug
+    }
+  }
+  tags {
+    nodes {
+      id
+      name
+      uri
+      slug
+      count
+    }
+  }
+  author {
+    node {
+      id
+      name
+      firstName
+      lastName
+      uri
+      avatar {
+        url
+      }
+      seo {
+        title
+        description
+        canonicalUrl
+        focusKeywords
+      }
+    }
+  }
+  content(format: RENDERED)
+  nextPost {
+    uri
+    title
+  }
+  previousPost {
+    uri
+    title
+  }
+  featuredImage {
+    node {
+      altText
+      sourceUrl
+      srcSet
+      mediaItemUrl
+      mediaDetails {
+        sizes {
+          name
+          sourceUrl
+          width
+          height
+          mimeType
+        }
+      }
+    }
+  }
+  seo {
+    title
+    description
+    canonicalUrl
+    focusKeywords
+    openGraph {
+      url
+      title
+      siteName
+      description
+      image {
+        secureUrl
+        url
+        width
+        type
+        height
+      }
+      locale
+      type
+    }
+    jsonLd {
+      raw
+    }
+   }
+
+  }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+`;
+
+
+const limit = 2;
+let data = { posts: { nodes: [], pageInfo: { hasNextPage: false } } };//set every value to null and false initially
+let afterCursor:any= null;// used to define if any qury exist or not 
+
+
+ async function fetchdata(): Promise<void>{
+  try  
+  {    
+          const response = await client.query({ query: GET_DATA,  variables: { limit ,after: afterCursor} });  
+       data = response.data; 
+       
+       console.log("fetch datat called ")
+        console.log("mo data=",data.posts) 
+        renderData(data);
+      
+  }
+  catch(error) 
+  {
+       console.error("Error fetching GraphQL data:", error); 
+  }
+  }
+
+
+  function renderData(data:any) {
+    const container :any= document.getElementById("container");
+    data.posts.nodes.map((blogItem:any) => {
+      const postHTML = `
+        <p>1 ${blogItem.id}</p>
+        <p>2 ${blogItem.title}</p>
+        <p>3 ${blogItem.slug}</p>
+        
+        <br>
+      `;
+      container.innerHTML += postHTML;
+    });
+    console.log("render");
+  }
+
+
+
+
+ async function loadMore(): Promise<void>  {
+    if (data.posts.pageInfo.hasNextPage) {
+      afterCursor = data.posts.pageInfo.endCursor;
+      await fetchdata();
+    }
+  }
+
+const loadbtn = document.getElementById("loadBttn");
+if (loadbtn) {
+  loadbtn.addEventListener("click", async () => {
     await loadMore();
-  ))
-  
+  });
+}
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+    
+      // Initial data fetch
+      console.log("hello");
+      await fetchdata();
+    
+    
+    });
 
 </script>
-  
-  
-
- 
   
       
   

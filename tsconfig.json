@@ -20,5 +20,5 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": ["src/**/*.ts", "src/pages/graph.js"]
+  "include": ["src/**/*.ts", "src/pages/graph.js", "src/typescript/graphBkd.ts", "src/typescript/grBkd.ts"]
 }
