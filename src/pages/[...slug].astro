@@ -1,75 +1,48 @@
 ---
-import Home from "../components/tempLets/Home.astro";
-import Doc from "../components/ZetaPages/ZetaDoc.astro";
 import Blog from "../components/ZetaPages/ZetaBlog.astro";
 import Cont from "../components/ZetaPages/BlogContent.astro";
-import ZetaContact from "../components/ZetaPages/ZetaContact.astro";
-import ZetaAccnt from "../components/ZetaPages/zetaAccnt.astro";
-import ZetsShop from "../components/ZetaPages/ZetsShop.astro";
-import OpenTkt from "../components/ZetaPages/openTkt.astro";
-import Support from "../components/ZetaPages/Support.astro";
-import BlogCards from "../components/tempLets/blogCards.astro";
 import MainLayout from "../layouts/ZetaMainLayOut.astro";
-import {fetchData} from '../typescript/backend/getData';
+import { fetchdata } from "../typescript/backend/getData";
 
-
-
-
-
-//type matching with component 
+//type matching with component
 const componentMap = {
-  ["Home"]   : Home, 
-  ["Doc "]   : Doc,
-  ["Blog"]   : Blog, 
-  ["contact"]: ZetaContact,
-  ["account"]: ZetaAccnt,
-  ["shop"]   : ZetsShop,
-  ["ticket"] : OpenTkt,
-  ["support"]: Support,
+  ["Home"]: Blog,
   ["content"]: Cont,
-  // ["null"]: errPg;
 };
 
 export async function getStaticPaths() {
- 
-  //to fetch the data
-  const data11= await fetchData();
- 
- //slug list
- const pages = [
-      { slug:"blog", type: "Blog"},//Blog pg
+  const data11: any = await fetchdata();
 
-  ];
-   
-  const contentPages = data11.posts.nodes.map((data) => ({
-    slug: data.slug,
-    type: "content"
+  //slug list
+  const pages = [{ slug: "/", type: "Home" }];
+
+  const contentPages = data11.map((data) => ({
+    slug: "/" + data.slug,
+    type: "content",
   }));
 
   // Combine pages and contentPages into one array
   const allPages = [...pages, ...contentPages];
 
-  const staticPaths = allPages.map(({ slug, type}) => ({
-    params: { slug },   
-    props: { type,data11 }     
+  const staticPaths = allPages.map(({ slug, type }) => ({
+    params: { slug },
+    props: { type, data11 },
   }));
-  
+
   return staticPaths;
 }
 
 const { slug } = Astro.params;
-const { type, data11 } = Astro.props;  
+const { type, data11 } = Astro.props;
 
-
-const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type] : null;
+const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
 ---
+
 {
   PageComponent ? (
-      <MainLayout>
-        <PageComponent data={data11}/>
-        
-      </MainLayout>
-    
+    <MainLayout>
+      <PageComponent data={data11} />
+    </MainLayout>
   ) : (
     <p>Page not found</p>
   )

@@ -2,21 +2,36 @@
 //fetching the dat rom the post query  
 
 import client from './apolloConn';
-import {gql} from "../../../node_modules/@apollo/client/index"
 import {GET_DATA} from './post'
 
-export async function fetchData(){
 
-try 
-{
-     const response = await client.query({ query: GET_DATA, }); 
-     return response.data
-     
-}
-catch(error) 
-{
-     console.error("Error fetching GraphQL data:", error); 
-}
+let data :any=[] ;
+let cursor:any="true";
+// let hasNextPage:any=true;
+ 
+export async function fetchdata(){
+  let newData;
+  while(cursor){
+
+    try  
+  {    
+        const response = await client.query({ query: GET_DATA,  variables: {after: cursor} });  
+            newData= response.data; 
+             
+  }
+  catch(error) 
+  {
+       console.error("Error fetching GraphQL data:", error); 
+  }
+  // hasNextPage=newData.posts.pageInfo.hasNextPage;
+  cursor=newData.posts.pageInfo.endCursor;
+  data=[...data,...newData.posts.nodes];
 
 
-}
+  }
+  return data;  
+  }
+
+ 
+ 
+   
