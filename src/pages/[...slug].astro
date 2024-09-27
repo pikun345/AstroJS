@@ -19,9 +19,9 @@ export async function getStaticPaths() {
   const contentPages = data11.map((data) => ({
     slug: "blog/" + data.slug,
     type: "content",
-    data:data
+    data:data // here each index data goes one by one 
   }));
-
+ 
   // Combine pages and contentPages into one array
   const allPages = [...pages, ...contentPages];
 
@@ -36,8 +36,6 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const { type, data } = Astro.props;
 
-
-
 const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
 
 ---
@@ -51,3 +49,4 @@ const PageComponent = Object.keys(componentMap).find((key) => key === type)? com
     <p>Page not found</p>
   )
 }
+

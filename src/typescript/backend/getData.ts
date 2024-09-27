@@ -21,9 +21,10 @@ export async function fetchdata(){
   catch(error) 
   {
        console.error("Error fetching GraphQL data:", error); 
+       break;
   }
   cursor=newData.posts.pageInfo.endCursor;
-  data=[...data,...newData.posts.nodes];
+  data.push(...newData.posts.nodes);
 
 
   }
