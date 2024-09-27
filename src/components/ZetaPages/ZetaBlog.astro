@@ -37,7 +37,6 @@ const loadMoreDivs = (): void => {
     }
 
 
-    // Change text of the button if no more hidden divs are left
     if (document.querySelectorAll('#divContainer .hidden').length === 0) {
         const loadMoreButton = document.getElementById('loadMoreButton') as HTMLButtonElement;
         if (loadMoreButton) {
@@ -46,7 +45,6 @@ const loadMoreDivs = (): void => {
     }
 };
 
-// Add event listener to the button
 const loadMoreButton = document.getElementById('loadMoreButton') as HTMLButtonElement;
 if (loadMoreButton) {
     loadMoreButton.addEventListener('click', loadMoreDivs);

@@ -1,13 +1,18 @@
 ---
 import '../../styles/zeta.css';
 const {data}=Astro.props;
+
+
 ---
-{data.map((blogItem, index) => (
+{data.map((blogItem, index) =>(
 
     <div class={`relative group ${index >= 3 ? 'hidden' : ''}`}>
-      <a href={`/${blogItem.slug}`}>
-        { console.log("href",blogItem.slug)
-           }
+      
+      <a href={`blog/${blogItem.slug}`}>
+        
+        
+
+
         <img src={blogItem.featuredImage} alt="00Image" class="w-96 h-52 object-cover">
 
         <div class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-80 transition-opacity flex flex-col justify-between p-4 w-96 h-52">
@@ -44,5 +49,7 @@ const {data}=Astro.props;
         </div>
       </div>
     </div>
+
+
   ))}
 

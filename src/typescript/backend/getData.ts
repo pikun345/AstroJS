@@ -7,7 +7,6 @@ import {GET_DATA} from './post'
 
 let data :any=[] ;
 let cursor:any="true";
-// let hasNextPage:any=true;
  
 export async function fetchdata(){
   let newData;
@@ -23,7 +22,6 @@ export async function fetchdata(){
   {
        console.error("Error fetching GraphQL data:", error); 
   }
-  // hasNextPage=newData.posts.pageInfo.hasNextPage;
   cursor=newData.posts.pageInfo.endCursor;
   data=[...data,...newData.posts.nodes];
 

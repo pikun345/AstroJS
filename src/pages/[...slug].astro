@@ -14,34 +14,38 @@ export async function getStaticPaths() {
   const data11: any = await fetchdata();
 
   //slug list
-  const pages = [{ slug: "/", type: "Home" }];
+  const pages = [{ slug: "/", type: "Home" , data:data11}];
 
   const contentPages = data11.map((data) => ({
-    slug: "/" + data.slug,
+    slug: "blog/" + data.slug,
     type: "content",
+    data:data
   }));
 
   // Combine pages and contentPages into one array
   const allPages = [...pages, ...contentPages];
 
-  const staticPaths = allPages.map(({ slug, type }) => ({
+  const staticPaths = allPages.map(({ slug, type ,data }) => ({
     params: { slug },
-    props: { type, data11 },
+    props: { type,data  },
   }));
 
   return staticPaths;
 }
 
 const { slug } = Astro.params;
-const { type, data11 } = Astro.props;
+const { type, data } = Astro.props;
+
+
 
 const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
+
 ---
 
 {
   PageComponent ? (
     <MainLayout>
-      <PageComponent data={data11} />
+      <PageComponent data={data}/>
     </MainLayout>
   ) : (
     <p>Page not found</p>
