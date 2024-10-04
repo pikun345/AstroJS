@@ -1,7 +1,8 @@
+
  
 //fetching the dat rom the post query  
 
-import client from './apolloConn';
+import client from './apolloconn';
 import {GET_DATA} from './post'
 
 
@@ -32,5 +33,3 @@ export async function fetchdata(){
   }
 
  
- 
-   

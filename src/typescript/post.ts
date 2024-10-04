@@ -1,5 +1,5 @@
 
-import {gql} from "../../../node_modules/@apollo/client/index"
+import {gql} from "../../node_modules/@apollo/client/index"
 export const GET_DATA = gql `query Posts($after:String){
   posts(after:$after){
     nodes{

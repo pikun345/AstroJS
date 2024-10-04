@@ -2,7 +2,7 @@
 import Blog from "../components/ZetaPages/ZetaBlog.astro";
 import Cont from "../components/ZetaPages/BlogContent.astro";
 import MainLayout from "../layouts/ZetaMainLayOut.astro";
-import { fetchdata } from "../typescript/backend/getData";
+import {fetchdata} from "../typescript/getData";
 
 //type matching with component
 const componentMap = {
@@ -19,34 +19,36 @@ export async function getStaticPaths() {
   const contentPages = data11.map((data) => ({
     slug: "blog/" + data.slug,
     type: "content",
-    data:data // here each index data goes one by one 
+    data:data, // here each index data goes one by one 
   }));
- 
+
+  const nextSlugs =data11.map(post => post.slug); 
+
   // Combine pages and contentPages into one array
   const allPages = [...pages, ...contentPages];
 
-  const staticPaths = allPages.map(({ slug, type ,data }) => ({
+   const staticPaths = allPages.map(({ slug, type ,data}) => ({
     params: { slug },
-    props: { type,data  },
+    props: { type,data,nextSlugs}
   }));
-
+   
   return staticPaths;
 }
 
 const { slug } = Astro.params;
-const { type, data } = Astro.props;
+const { type, data ,nextSlugs} = Astro.props;
 
 const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
+
 
 ---
 
 {
   PageComponent ? (
     <MainLayout>
-      <PageComponent data={data}/>
+      <PageComponent data={data} sluglist={nextSlugs}/>
     </MainLayout>
   ) : (
     <p>Page not found</p>
   )
 }
-

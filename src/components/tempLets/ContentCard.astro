@@ -1,8 +1,20 @@
 ---
 import '../../styles/zeta.css';
-const {data}=Astro.props;
+const {data}=Astro.props;//here data is crnt slug related data but alldata is all slug deytils
+
+// const crntblog=AllData.find(blog=>`blog/${blog.slug}`===slug)
+// const Index = AllData.findIndex(blog => `blog/${blog.slug}` === slug);
+// // console.log("all data ", AllData[0].slug);
+
+// console.log("index =",crntblog);
+// console.log(Index);
+
+
+
 ---
-<div class="relative flex items-center justify-center">
+
+
+  <div class="relative flex items-center justify-center">
   <!-- Image Section -->
   <div class="z-10">
     <img src={data.img || "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"}  
@@ -51,13 +63,13 @@ const {data}=Astro.props;
         <div class="flex items-center space-x-4 flex-row">
           <div class="mb-5">
             <a href="">
-              <img src={data.author.node.avatar.url} alt="profile pic" class="rounded-full" height="30" width="30">
+              <img src="url" alt="profile pic" class="rounded-full" height="30" width="30">
             </a>
           </div>
           <div class="flex flex-row">
             <div class="flex items-center text-sm text-gray-600 space-x-1 mb-5">
               <span>BY</span>
-              <span class="font-bold hover:text-gray-500 text-black">{data.author.name || 'Author Name'}</span>
+              <span class="font-bold hover:text-gray-500 text-black">{'Author Name'}</span>
               <span>•</span>
               <span>{data.date || 'DECEMBER 13, 2022'}</span>
               <span>{data.time || '7 min read'}</span>
@@ -68,3 +80,4 @@ const {data}=Astro.props;
     </div>
   </div>
 </div>
+
