@@ -24,7 +24,7 @@
 
         
         newCont=newDoc.getElementById(`${nextSlug}`);//this is bcoz in new doc entire html present so from the entire html it will fetch only that div where next post started 
-        history.pushState(null,'',`blog/${nextSlug}`)
+        history.pushState(null,'',`/blog/${nextSlug}`)
         nextSlug=newCont.getAttribute("data-nextSlug");
         console.log("update",nextSlug);
         
