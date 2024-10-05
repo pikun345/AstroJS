@@ -1,15 +1,14 @@
 ---
 import '../../styles/zeta.css';
-import ContentCard from '../tempLets/ContentCard.astro';
-import SrickyImg from '../tempLets/SrickyImg.astro';
-import GrayText from '../tempLets/grayText.astro';
-import SocialMedia from '../tempLets/SocialMedia.astro';
-import Realted from '../tempLets/Realted.astro';
+import ContentCard from '../temPlates/ContentCard.astro';
+import SrickyImg from '../temPlates/SrickyImg.astro';
+import GrayText from '../temPlates/grayText.astro';
+import SocialMedia from '../temPlates/SocialMedia.astro';
+import Realted from '../temPlates/Realted.astro';
 
 const { data,sluglist} = Astro.props; // here slug for current blog details slug and alldata for all blog details  
 
 const currentIndex = sluglist.findIndex((slug) => slug === data.slug);
-console.log("hii");
 
 
 const nextSlug = sluglist[currentIndex + 1];//temporary setup 
@@ -20,14 +19,30 @@ const nextSlug = sluglist[currentIndex + 1];//temporary setup
 ---
 
 
-<div class="blog-section mb-64" id={data.slug}  data-nextSlug={nextSlug}> 
+<div class="blog-section mb-64" id={data.slug}  data-nextSlug={nextSlug} data-all={data}> 
   <ContentCard data={data}/>
 
   <div class="relative ml-96 mr-24 mt-28 flex flex-row space-x-16 h-auto w-auto">
     <SrickyImg />
     <div>
       txt
-      <GrayText />
+
+<!-- tags -->
+<div>
+  <ul class="flex flex-row">
+    <div class="bg-gray-500 bg-opacity-50 mt-2 mb-2 mr-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
+      <li class="m-2 bg-opacity-50 text-white font-semibold">
+        {data.tags.nodes.map((data)=>(
+
+          <a href={data.uri}>{data.name+"  "}</a>
+
+
+        ))}
+      </li>
+    </div>
+  </ul>
+</div>
+      
       <SocialMedia />
 
       <div class="bg-gray-200 p-5">

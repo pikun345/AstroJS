@@ -3,17 +3,23 @@ import Blog from "../components/ZetaPages/ZetaBlog.astro";
 import Cont from "../components/ZetaPages/BlogContent.astro";
 import MainLayout from "../layouts/ZetaMainLayOut.astro";
 import {fetchdata} from "../typescript/getData";
+import Author from "../components/ZetaPages/author.astro";
+import Catagory from "../components/ZetaPages/Catagory.astro";
+import Tag from "../components/ZetaPages/tag.astro";
 
 //type matching with component
 const componentMap = {
   ["Home"]: Blog,
   ["content"]: Cont,
+  ["author"]:Author,
+  ["Cat"]:Catagory,
+  ["tag"]:Tag
 };
 
 export async function getStaticPaths() {
   const data11: any = await fetchdata();
 
-  //slug list
+//  slug list
   const pages = [{ slug: "/", type: "Home" , data:data11}];
 
   const contentPages = data11.map((data) => ({
@@ -22,16 +28,46 @@ export async function getStaticPaths() {
     data:data, // here each index data goes one by one 
   }));
 
+    const auth=data11.map((data) => ({
+    slug:data.author.node.uri,
+    type: "author",
+    data:data11, 
+
+    
+  }));
+  const Cate = data11.flatMap((data1) =>
+    data1.categories.nodes.map((data) => ({
+      slug: data.uri, 
+      type: "Cat",
+      data: data11, 
+    }))
+  );
+
+  const tags = data11.flatMap((data1) =>
+    data1.tags.nodes.map((data) => ({
+      slug: data.uri, 
+      type: "tag",
+      data: data11, 
+    }))
+  );
+
+
+  
   const nextSlugs =data11.map(post => post.slug); 
 
   // Combine pages and contentPages into one array
-  const allPages = [...pages, ...contentPages];
+  const allPages = [...pages,...contentPages,...auth,...Cate,...tags];
 
    const staticPaths = allPages.map(({ slug, type ,data}) => ({
     params: { slug },
-    props: { type,data,nextSlugs}
+    props: { type,data,nextSlugs,Cate}
   }));
-   
+   data11.map((data)=>{
+      console.log(data.id);
+      
+      console.log(data.tags.nodes);
+      
+   })
   return staticPaths;
 }
 
@@ -40,13 +76,11 @@ const { type, data ,nextSlugs} = Astro.props;
 
 const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
 
-
 ---
-
 {
   PageComponent ? (
     <MainLayout>
-      <PageComponent data={data} sluglist={nextSlugs}/>
+      <PageComponent data={data} sluglist={nextSlugs} slug={slug}/>
     </MainLayout>
   ) : (
     <p>Page not found</p>
