@@ -16,7 +16,7 @@ const componentMap = {
   ["tag"]:Tag
 };
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ paginate }) {
   const data11: any = await fetchdata();
 
 //  slug list
@@ -52,28 +52,25 @@ export async function getStaticPaths() {
   );
 
 
-  
   const nextSlugs =data11.map(post => post.slug); 
 
   // Combine pages and contentPages into one array
   const allPages = [...pages,...contentPages,...auth,...Cate,...tags];
 
+
+
    const staticPaths = allPages.map(({ slug, type ,data}) => ({
     params: { slug },
     props: { type,data,nextSlugs,Cate}
   }));
-   data11.map((data)=>{
-      console.log(data.id);
-      
-      console.log(data.tags.nodes);
-      
-   })
+  
   return staticPaths;
 }
 
 const { slug } = Astro.params;
 const { type, data ,nextSlugs} = Astro.props;
 
+//mapping with slug type and getting the component
 const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
 
 ---

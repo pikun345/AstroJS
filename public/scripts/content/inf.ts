@@ -8,14 +8,12 @@
 
   console.log("nxt slug =",nextSlug);
   const loadNext=async()=>{
-    console.log("loading called");
 
 
     loading=true;
     try
     {
       const res=await fetch(`/blog/${nextSlug}`);
-      console.log("resp=",res);
       
       if(res.ok){
         const nextPost=await res.text();//recvd html convert to text
@@ -48,10 +46,8 @@
 
   async function render(){
     const data=await loadNext();
-    console.log(data);
     
   
-     console.log("render called");
      
    const container :any= document.getElementById("nextpost");
   
