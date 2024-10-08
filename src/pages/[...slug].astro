@@ -26,6 +26,7 @@ export async function getStaticPaths({ paginate }) {
     slug: "blog/" + data.slug,
     type: "content",
     data:data, // here each index data goes one by one 
+    AllData:data11
   }));
 
     const auth=data11.map((data) => ({
@@ -59,16 +60,16 @@ export async function getStaticPaths({ paginate }) {
 
 
 
-   const staticPaths = allPages.map(({ slug, type ,data}) => ({
+   const staticPaths = allPages.map(({ slug, type ,data,AllData}) => ({
     params: { slug },
-    props: { type,data,nextSlugs,Cate}
+    props: { type,data,nextSlugs,Cate,AllData}
   }));
   
   return staticPaths;
 }
 
 const { slug } = Astro.params;
-const { type, data ,nextSlugs} = Astro.props;
+const { type, data ,nextSlugs,AllData} = Astro.props;
 
 //mapping with slug type and getting the component
 const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
@@ -77,7 +78,7 @@ const PageComponent = Object.keys(componentMap).find((key) => key === type)? com
 {
   PageComponent ? (
     <MainLayout>
-      <PageComponent data={data} sluglist={nextSlugs} slug={slug}/>
+      <PageComponent data={data} sluglist={nextSlugs} slug={slug} AllData={AllData}/>
     </MainLayout>
   ) : (
     <p>Page not found</p>

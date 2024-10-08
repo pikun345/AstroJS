@@ -7,6 +7,7 @@ export default {
       colors: {
         'custom-blue': '#le00e3',
       },
+      
       spacing: {
         '72': '18rem',
         '84': '21rem',
@@ -16,7 +17,11 @@ export default {
       },
       padding:{
         'crd_size':'20px'
-      }
+      },
+      width:{
+        '84':'21rem',
+        '90':'23.3rem'
+            }
     },
   },
   plugins: [
@@ -26,7 +31,6 @@ export default {
     // You can add other plugins here if needed
   ],
 }
-
 
 // w-: Applies a width to an element. For example, w-10 would apply a width of 2.5rem (40px by default).
 // h-: Applies a height to an element.

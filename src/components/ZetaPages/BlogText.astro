@@ -1,0 +1,24 @@
+---
+import '../../styles/zeta.css';
+const {data}=Astro.props;
+---
+<div>
+  <div id="content" data-content={data.content}>
+
+  </div>
+</div>
+
+<script>
+
+const parser=new DOMParser();
+
+    const content:any=document.getElementById("content");
+    const htmlData:any=content?.getAttribute("data-content");
+    console.log("html=",htmlData);
+    const newDoc=parser.parseFromString(htmlData,'text/html');
+    console.log("new doc",newDoc);
+    content.innerHTML=newDoc.body.innerHTML;
+
+
+
+</script>

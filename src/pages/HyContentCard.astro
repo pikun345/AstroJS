@@ -4,20 +4,30 @@ const {data}=Astro.props;
 
 ---
 <div class="relative flex flex-col justify-center items-center">
-    <div class="z-10">
-        <img src={data.img || "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"}  
+    {data.featuredImage ?(
+         <div class="z-10">
+        <img src={data.featuredImage.node.sourceUrl}
+             alt="img1" 
+             height="800" 
+             width="1200" 
+             class="relative mt-7 z-10 rounded-lg">
+      </div>  
+    ):(<div class="z-10">
+        <img src={"https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"}  
              alt="img1" 
              height="800" 
              width="1100" 
-             class="relative z-10">
+             class="relative z-10 ">
       </div>  
+      )}
+   
        <div class="absolute z-20 bottom-32 left-60">
         <div class="bg-blue-950 rounded-lg p-2 w-52 m-3">
             <span class="text-white">logo</span>
             <span class="text-white">Artificial Intelligence</span>
         </div>
-        <div class="font-bold text-4xl m-3"> <p class="break-all"></p> Boost AI Literacy: 5 Proven Ways to Master Essential Skills</div>
-        <div class="bg-blue-950 rounded-lg p-2 w-52 text-white m-3">
+        <div class="font-bold text-4xl m-3 text-white"> <p class="break-all ..."></p> Boost AI Literacy: 5 Proven Ways to Master Essential Skills</div>
+        <div class="bg-black rounded-lg p-2 w-52 text-white m-3">
             {Date}</div>
         <div>
           
@@ -26,9 +36,9 @@ const {data}=Astro.props;
         
         
         <span class="flex flex-row space-x-4 items-center relative">
-            <span class="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></span>
-            <span class="text-black m-3">logo</span>
-            <span class="border-l-2 h-6 border-gray-700"></span>
+            <span class="absolute inset-0 bg-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></span>
+            <span class="text-white m-3">logo</span>
+            <span class="border-l-2 h-6 border-white bg-white z-10"></span>
 
 
             <!-- Facebook Icon -->

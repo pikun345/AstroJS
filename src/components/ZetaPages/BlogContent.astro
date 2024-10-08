@@ -5,30 +5,355 @@ import SrickyImg from '../temPlates/SrickyImg.astro';
 import GrayText from '../temPlates/grayText.astro';
 import SocialMedia from '../temPlates/SocialMedia.astro';
 import Realted from '../temPlates/Realted.astro';
-
-const { data,sluglist} = Astro.props; // here slug for current blog details slug and alldata for all blog details  
-
-const currentIndex = sluglist.findIndex((slug) => slug === data.slug);
+import HyContentCard from "../../pages/HyContentCard.astro";
+import BlogText from './BlogText.astro';
 
 
-const nextSlug = sluglist[currentIndex + 1];//temporary setup 
+ const { data,sluglist,AllData} = Astro.props; // here slug for current blog details slug and alldata for all blog details  
+
+ const currentIndex = sluglist.findIndex((slug) => slug === data.slug);
+
+
+ const nextSlug = sluglist[currentIndex + 1];//temporary setup 
 // const nextSlug = data.nextPost.slug; this will work when next post is not null and contain the next slug 
+
+console.log("2",AllData[1].featuredImage);
+AllData.map((data,index)=>{
+
+
+  if(data.featuredImage)
+  console.log("yes", data.featuredImage.node.mediaDetails.sizes[0].name);//then render 
+  else
+  console.log("no",index); 
+  
+  
+
+})
+
+
+
 
 
 
 ---
 
+    <div id={data.slug}  data-nextSlug={nextSlug} data-all={data}>
+        <HyContentCard data={data}/>
+     </div>
+     <div class="flex flex-row justify-center items-center mb-40">
+             
+        <div class="flex flex-row pr-16 mr-32">
+<!-- 1st div -->
+        <div class="mt-5 w-full">
+                
+            <div class="ml-40">
+                <div class="pl-12">
 
-<div class="blog-section mb-64" id={data.slug}  data-nextSlug={nextSlug} data-all={data}> 
+                    <div class="">
+
+                        <div class="bg-white text-black p-4 h-auto w-auto border border-blue-300" style="float: right;margin-left: 1rem;width: 50%;">
+                                          <!-- table content -->
+                                          <div id="table_content" data-table={data.content}>
+                                            <div class="">
+                                <h2 class="m-3">
+                                    Table of Contents
+                                </h2> 
+                           <ul class="m-3 list-disc">
+                            <li class="m-3 hover:underline"> <a href="#">Why is AI Literacy Important?</a> </li>
+                            <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a>
+                            
+                                <ul class="m-3 list-disc">
+                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
+                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
+                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
+                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
+                            
+                            
+                            
+                            
+                        
+                           </ul>
+                             
+                        
+                            </div>          
+
+                                          </div>
+                           </div>
+         
+                           <div>
+                            <p class="w-auto">
+                              <BlogText data={data}/>
+                               
+                            </p>
+ 
+
+                           </div>
+                           
+                          
+                       </div>
+                      
+                       <div class="m-5">
+                           Tag :
+                            <span>
+                               <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                               TagName
+                               <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                               2
+                           </span>
+                               </button>
+                           </span>
+                       </div>
+                       <div class="m-5 flex flex-row">
+                           Share 
+                           <span class="ml-3 mr-3">
+                               <!-- Github -->
+                              <span class="[&>svg]:h-5 [&>svg]:w-5">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 496 512">
+                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                                    <path
+                                      d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                                  </svg>
+                                </span>
+                                                          
+                           </span> 
+                           <span class="ml-3 mr-3">
+                               <span class="[&>svg]:h-5 [&>svg]:w-5">
+                                   <svg
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     fill="currentColor"
+                                     viewBox="0 0 320 512">
+                                     <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                                     <path
+                                       d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+                                   </svg>
+                                 </span>
+                            </span> 
+                            <span class="ml-3 mr-3">
+                               <span class="[&>svg]:h-5 [&>svg]:w-5">
+                                   <svg
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     fill="currentColor"
+                                     viewBox="0 0 448 512">
+                                     <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                                     <path
+                                       d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                                   </svg>
+                                 </span>
+                           </span>
+                       </div>
+                       <div class="m-5">
+                           comment 
+                           <span>
+                               <button type="button" class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                   <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                                   <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
+                                   <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
+                                   </svg>
+                                   <span class="sr-only">Notifications</span>
+                                     <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">20</div>
+                               </button>
+       
+                           </span>
+                       </div>
+       
+
+                </div>
+
+              
+            </div>
+          
+           
+
+        </div>
+
+        <!-- 2nd div -->
+        <div class="h-auto w-96  ml-3">
+          <div class="h-auto w-96 m-5 bg-white p-2 rounded-lg">
+            <div class="w-full">
+                    <h2 class="m-3 font-bold text-3xl">
+                        Featured Insights
+                    </h2>
+                    <ul class="">
+                      {
+                        data.featuredImage ? (
+                        
+                        <li class="">
+                           <div class="flex flex-row w-full items-center hover:bg-blue-200 ">
+                             <div class="m-2">
+                               <img class="rounded-md object-cover" style="height: 100px; width: 100px;" src={ data.featuredImage.node.sourceUrl} alt="one img" />
+                             </div>
+                             <div class="ml-1 w-44 text-left font-bold"> <!-- Adjusted width and added left margin for spacing -->
+                               Text Of Featured Images 
+                             </div>
+                           </div>
+                        </li>
+
+                          
+                          
+                        ) : (<li class="mb-5 w-64 overflow-hidden">
+                           <div class="flex flex-row items-center hover:bg-blue-200 overflow-hidden"> <!-- Center the image and text vertically -->
+                             <div class="m-2">
+                               <img class="rounded-md object-cover" style="height: 100px; width: 100px;" src="" alt="one img" />
+                             </div>
+                             <div class="ml-1 w-36 text-left"> <!-- Adjusted width and added left margin for spacing -->
+                               No Featured Images 
+                             </div>
+                           </div>
+                        </li>)
+                        
+                        
+                      }
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="h-auto w-full m-5 bg-white p-5 rounded-lg">
+                <div class="text-2xl text-black">Subscribe to Newsletter</div> 
+             <div class="flex justify-center items-center m-1 w-auto h-32 text-white bg-blue-950">
+               <p class="break-all p-2">
+                Get the AI Edge
+                Subscribe to HyScaler's Newsletter Now!
+               </p>
+                
+    
+             </div>
+         
+            </div>
+    
+            <div class="h-auto w-full m-5 bg-white p-5 rounded-lg ">
+                <div class="text-2xl text-black">
+                    Follow Us
+                </div>
+                <div class="flex flex-row space-x-5 mt-2">
+                    <span class="[&>svg]:h-5 [&>svg]:w-5">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 448 512">
+                          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                          <path
+                            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                        </svg>
+                      </span>
+                 
+                    <!-- Facebook -->
+                   <span class="[&>svg]:h-5 [&>svg]:w-5">
+                       <svg
+                         xmlns="http://www.w3.org/2000/svg"
+                         fill="currentColor"
+                         viewBox="0 0 320 512">
+                         <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                         <path
+                           d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+                       </svg>
+                     </span>
+                  
+        <!-- Linkedin -->
+        <span class="[&>svg]:h-5 [&>svg]:w-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 448 512">
+              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path
+                d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+            </svg>
+          </span>
+        
+        <!-- Github -->
+        <span class="[&>svg]:h-5 [&>svg]:w-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 496 512">
+              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path
+                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+            </svg>
+          </span>
+    
+                </div>
+    
+    
+    
+              
+            </div>
+              <!-- cate -->
+              <div class="h-auto w-96 m-5 bg-white p-2 rounded-lg">
+                <div class="text-black text-2xl">
+                    Categories
+                </div>
+                <div>
+                  {AllData.flatMap((data) => 
+                    data.categories.nodes.map((itm) => (
+                    <button type="button" class="text-black w-90 mb-2 bg-gray-100 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-4 h-auto inline-flex items-center dark:bg-white dark:hover:bg-blue-200 dark:focus:ring-blue-800">
+                       <span class="w-32 ">
+                        {itm.name}
+
+                        </span> 
+                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                     </button>
+                    ))
+                  )}
+                   
+                       
+                </div>
+            </div>
+            <!-- tag section -->
+            <div class="h-auto w-full m-5 bg-white p-5 rounded-lg">
+                <div class="text-black text-2xl">
+                    Tags
+                </div>
+                <div>
+
+                  {AllData.flatMap((data) => 
+                    data.tags.nodes.map((itm) => (
+                        <button type="button" class="inline-flex m-2 items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                          {itm.name}
+                        <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                        2
+                        </span>
+                        </button>
+                        
+                    ))
+                  )}
+
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        </div>
+        <!-- 1st div -->
+
+     
+    </div>
+    
+
+
+
+<!--  -->
+<!--  -->
+<!-- <div class="blog-section mb-64" id={data.slug}  data-nextSlug={nextSlug} data-all={data}> 
   <ContentCard data={data}/>
 
   <div class="relative ml-96 mr-24 mt-28 flex flex-row space-x-16 h-auto w-auto">
     <SrickyImg />
     <div>
-      txt
+      txt -->
 
 <!-- tags -->
-<div>
+<!-- <div>
   <ul class="flex flex-row">
     <div class="bg-gray-500 bg-opacity-50 mt-2 mb-2 mr-2 h-10 hover:bg-blue-700 hover:bg-opacity-80 transition-colors duration-300">
       <li class="m-2 bg-opacity-50 text-white font-semibold">
@@ -59,10 +384,10 @@ const nextSlug = sluglist[currentIndex + 1];//temporary setup
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Related post -->
-  <div class="relative p-8 ml-7 mt-24 mr-7" style="bottom: 3rem;">
+  <!-- <div class="relative p-8 ml-7 mt-24 mr-7" style="bottom: 3rem;">
     <div class="text-black text-2xl mb-2 text-bold">
       <span>Related Post</span>
     </div>
@@ -79,6 +404,20 @@ const nextSlug = sluglist[currentIndex + 1];//temporary setup
 
 
 </div>
-
+-->
+<!-- 
 <script src="../../../public/scripts/content/inf.ts">
+</script>  -->
+
+<script>
+  const a:any=document.getElementById("table_content");
+  const s:any=a.getAttribute("data-table");
+  const parser1=new DOMParser();
+  const newDoc1=parser.parseFromString(htmlData,'text/html');
+  a.innerHTML=newDoc.querySelector(".wp-block-rank-math-toc-block");
+  
+
+
+
+  console.log("s=",newDoc1);
 </script>
