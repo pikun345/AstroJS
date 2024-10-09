@@ -54,7 +54,7 @@ export const GET_DATA = gql `query Posts($after:String){
     uri
     title
   }
-  featuredImage {
+  featuredImage{
     node {
       altText
       sourceUrl

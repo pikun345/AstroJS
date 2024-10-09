@@ -129,6 +129,53 @@
   background-color: #1d4ed8; /* Tailwind's blue-600 */
 }
 
+#content div{
+float: right 
+ 
+}
+#content p{
+   @apply mb-5 mt-2   
+  }
+
+  #content ul{
+    @apply list-disc
+  
+  }
+  #content li{
+    @apply mb-3
+  
+  }
+#content #wp-forms{
+  @apply mt-80
+}
+#content img{
+  height: 430px;
+  width: 990px;
+  @apply border-r-8 border-l-8 border-t-4 border-b-4 border-white rounded-lg
+}
+#content h2{
+  @apply mb-7 mt-7
+}
+.wp-block-rank-math-toc-block{
+  @apply border border-blue-300 p-4 mb-3 space-x-4 bg-blue-100 
+  
+}
+.wp-block-rank-math-toc-block li{
+  @apply hover:underline
+}
+
+.wp-block-rank-math-toc-block ul{
+  @apply list-disc 
+}
+
+
+ 
+#content h3{
+  @apply mb-4 
+}
+#content h2{
+  @apply text-lg 
+}
 /* zeta.css */
 body {
   @apply bg-gray-100 text-gray-900; /* Light mode styles */
@@ -141,4 +188,24 @@ body {
 /* Additional dark mode styles for other elements */
 .dark .navbar {
   @apply bg-gray-800;
+}
+.text-77xl {
+  @apply text-[3.3rem] leading-[4rem]; /* Apply custom font size and line height */
+}
+
+@media (max-width: 1000px) 
+{
+  .xsm\:hidden {
+      display: none;
+  }
+ 
+ 
+}
+@media (max-width: 1000px) 
+{
+  .xsm\:col {
+      flex-direction: column;
+  }
+ 
+ 
 }

@@ -9,82 +9,37 @@ import HyContentCard from "../../pages/HyContentCard.astro";
 import BlogText from './BlogText.astro';
 
 
- const { data,sluglist,AllData} = Astro.props; // here slug for current blog details slug and alldata for all blog details  
+ const { data,sluglist,AllTag,AllCategory} = Astro.props; // here slug for current blog details slug and alldata for all blog details  
 
+
+  // console.log("data tag",AllData);
+  
  const currentIndex = sluglist.findIndex((slug) => slug === data.slug);
 
 
  const nextSlug = sluglist[currentIndex + 1];//temporary setup 
 // const nextSlug = data.nextPost.slug; this will work when next post is not null and contain the next slug 
 
-console.log("2",AllData[1].featuredImage);
-AllData.map((data,index)=>{
-
-
-  if(data.featuredImage)
-  console.log("yes", data.featuredImage.node.mediaDetails.sizes[0].name);//then render 
-  else
-  console.log("no",index); 
-  
-  
-
-})
-
-
-
-
-
 
 ---
+  <div class="blog-section mb-64" id={data.slug}  data-nextSlug={nextSlug} data-all={data}> 
+
+
 
     <div id={data.slug}  data-nextSlug={nextSlug} data-all={data}>
         <HyContentCard data={data}/>
      </div>
-     <div class="flex flex-row justify-center items-center mb-40">
+     <div class="flex flex-row justify-center items-center mb-40 xsm:col">
              
         <div class="flex flex-row pr-16 mr-32">
 <!-- 1st div -->
-        <div class="mt-5 w-full">
+        <div class="mt-5 ml-40 p-2 h-1/3 rounded-lg bg-white">
                 
-            <div class="ml-40">
-                <div class="pl-12">
+                <div class="pl-3 mr-3 mt-3">
 
                     <div class="">
 
-                        <div class="bg-white text-black p-4 h-auto w-auto border border-blue-300" style="float: right;margin-left: 1rem;width: 50%;">
-                                          <!-- table content -->
-                                          <div id="table_content" data-table={data.content}>
-                                            <div class="">
-                                <h2 class="m-3">
-                                    Table of Contents
-                                </h2> 
-                           <ul class="m-3 list-disc">
-                            <li class="m-3 hover:underline"> <a href="#">Why is AI Literacy Important?</a> </li>
-                            <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a>
-                            
-                                <ul class="m-3 list-disc">
-                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
-                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
-                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
-                                    <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li class="m-3 hover:underline"><a href="#">Why is AI Literacy Important?</a></li>
-                            
-                            
-                            
-                            
-                        
-                           </ul>
-                             
-                        
-                            </div>          
-
-                                          </div>
-                           </div>
-         
-                           <div>
+                        <div>
                             <p class="w-auto">
                               <BlogText data={data}/>
                                
@@ -96,23 +51,47 @@ AllData.map((data,index)=>{
                           
                        </div>
                       
-                       <div class="m-5">
-                           Tag :
+                       <div class="mt-5 mb-9 flex flex-row">
+                          <span class="font-bold mr-2 mb-11">
+                            Tag:
+
+
+                          </span>
                             <span>
-                               <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                               TagName
-                               <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
-                               2
-                           </span>
-                               </button>
+                              {
+                                data.tags.nodes.map((itm)=>(
+                                   <span class=" p-1">
+
+                                    <button type="button" class="px-3 py-2 text-xs mr-2 mb-2 font-medium text-center inline-flex items-center text-white bg-blue-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                 
+                                 {itm.name}
+                                 <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-black bg-blue-200 rounded-full">
+                                                                2
+                                 </span>
+                                 </button>
+                                    
+                                    </span>
+                                
+
+
+                                
+
+                                ))
+
+
+                              }
+                               
                            </span>
                        </div>
-                       <div class="m-5 flex flex-row">
-                           Share 
+                       <div class="mt-5 flex flex-row mb-9">
+                        <span class="font-bold mr-2">
+                          Share :
+                        </span>
                            <span class="ml-3 mr-3">
                                <!-- Github -->
-                              <span class="[&>svg]:h-5 [&>svg]:w-5">
+                              <span class="[&>svg]:h-8 [&>svg]:w-8">
                                   <svg
+                                   class="hover:bg-gray-500 rounded-lg"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor"
                                     viewBox="0 0 496 512">
@@ -124,8 +103,10 @@ AllData.map((data,index)=>{
                                                           
                            </span> 
                            <span class="ml-3 mr-3">
-                               <span class="[&>svg]:h-5 [&>svg]:w-5">
-                                   <svg
+                            <span class="[&>svg]:h-8 [&>svg]:w-8">
+                              <svg                                    
+                              class="hover:bg-gray-500 rounded-lg"
+
                                      xmlns="http://www.w3.org/2000/svg"
                                      fill="currentColor"
                                      viewBox="0 0 320 512">
@@ -136,8 +117,10 @@ AllData.map((data,index)=>{
                                  </span>
                             </span> 
                             <span class="ml-3 mr-3">
-                               <span class="[&>svg]:h-5 [&>svg]:w-5">
-                                   <svg
+                              <span class="[&>svg]:h-8 [&>svg]:w-8">
+                                <svg
+                                class="hover:bg-gray-500 rounded-lg"
+
                                      xmlns="http://www.w3.org/2000/svg"
                                      fill="currentColor"
                                      viewBox="0 0 448 512">
@@ -148,10 +131,12 @@ AllData.map((data,index)=>{
                                  </span>
                            </span>
                        </div>
-                       <div class="m-5">
-                           comment 
+                       <div class="mt-5">
+                        <span class="font-bold mr-2">
+                          Comment :
+                        </span>
                            <span>
-                               <button type="button" class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                               <button type="button" class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
                                    <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
                                    <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
@@ -167,15 +152,14 @@ AllData.map((data,index)=>{
                 </div>
 
               
-            </div>
           
            
 
         </div>
 
         <!-- 2nd div -->
-        <div class="h-auto w-96  ml-3">
-          <div class="h-auto w-96 m-5 bg-white p-2 rounded-lg">
+        <div class="h-auto w-96  ml-3 ">
+          <div class="h-auto w-96 m-5 bg-white p-2 rounded-lg ">
             <div class="w-full">
                     <h2 class="m-3 font-bold text-3xl">
                         Featured Insights
@@ -215,12 +199,35 @@ AllData.map((data,index)=>{
             </div>
     
             <div class="h-auto w-full m-5 bg-white p-5 rounded-lg">
-                <div class="text-2xl text-black">Subscribe to Newsletter</div> 
+                <div class="text-3xl text-black font-bold">Subscribe to Newsletter</div> 
              <div class="flex justify-center items-center m-1 w-auto h-32 text-white bg-blue-950">
-               <p class="break-all p-2">
-                Get the AI Edge
-                Subscribe to HyScaler's Newsletter Now!
-               </p>
+                <div class="flex flex-col mb-2 mt-2">
+                  <h2 class="font-bold  text-2xl">Get the AI Edge</h2> 
+                  <div class="flex justify-center items-center">
+                    <p class="w-32 text-xl">
+                      Subscribe to <br>
+                    </p>
+
+                  </div>
+                  <div class="flex justify-center items-center">
+                    <p class="w-32 ml-5 text-xl">
+                      HyScaler's 
+                    </p>
+                   
+
+                  </div>
+                  <div class="flex justify-center items-center">
+                    <p class="w-40 ml-3 text-xl">
+                      News Letter Now
+                    </p>
+
+                    
+                  </div>
+                
+                
+
+                </div>
+                
                 
     
              </div>
@@ -228,11 +235,11 @@ AllData.map((data,index)=>{
             </div>
     
             <div class="h-auto w-full m-5 bg-white p-5 rounded-lg ">
-                <div class="text-2xl text-black">
+                <div class="text-4xl text-black font-bold">
                     Follow Us
                 </div>
-                <div class="flex flex-row space-x-5 mt-2">
-                    <span class="[&>svg]:h-5 [&>svg]:w-5">
+                <div class="flex flex-row space-x-5 p-2 ml-4 mt-2">
+                    <span class="[&>svg]:h-11 [&>svg]:w-11 hover:bg-blue-200 rounded-lg">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="currentColor"
@@ -244,8 +251,8 @@ AllData.map((data,index)=>{
                       </span>
                  
                     <!-- Facebook -->
-                   <span class="[&>svg]:h-5 [&>svg]:w-5">
-                       <svg
+                    <span class="[&>svg]:h-11 [&>svg]:w-11 hover:bg-blue-200 rounded-lg">
+                      <svg
                          xmlns="http://www.w3.org/2000/svg"
                          fill="currentColor"
                          viewBox="0 0 320 512">
@@ -256,8 +263,8 @@ AllData.map((data,index)=>{
                      </span>
                   
         <!-- Linkedin -->
-        <span class="[&>svg]:h-5 [&>svg]:w-5">
-            <svg
+        <span class="[&>svg]:h-11 [&>svg]:w-11 hover:bg-blue-200 rounded-lg">
+          <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 448 512">
@@ -268,8 +275,8 @@ AllData.map((data,index)=>{
           </span>
         
         <!-- Github -->
-        <span class="[&>svg]:h-5 [&>svg]:w-5">
-            <svg
+        <span class="[&>svg]:h-11 [&>svg]:w-11 hover:bg-blue-200 rounded-lg">
+          <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 496 512">
@@ -286,15 +293,15 @@ AllData.map((data,index)=>{
               
             </div>
               <!-- cate -->
-              <div class="h-auto w-96 m-5 bg-white p-2 rounded-lg">
-                <div class="text-black text-2xl">
+              <div class="h-auto w-96 m-5 bg-white pl-5 pt-2 pb-2 rounded-lg">
+                <div class="text-4xl text-black font-bold mb-4">
                     Categories
                 </div>
                 <div>
-                  {AllData.flatMap((data) => 
-                    data.categories.nodes.map((itm) => (
-                    <button type="button" class="text-black w-90 mb-2 bg-gray-100 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-4 h-auto inline-flex items-center dark:bg-white dark:hover:bg-blue-200 dark:focus:ring-blue-800">
-                       <span class="w-32 ">
+                  {AllCategory.flatMap((data) => 
+                    data.nodes.map((itm) => (
+                    <button type="button" class="text-black w-84 mb-2 space-x-40 bg-gray-100 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-4 h-auto inline-flex  dark:bg-white dark:hover:bg-blue-200 dark:focus:ring-blue-800">
+                       <span class="w-32">
                         {itm.name}
 
                         </span> 
@@ -310,16 +317,16 @@ AllData.map((data,index)=>{
             </div>
             <!-- tag section -->
             <div class="h-auto w-full m-5 bg-white p-5 rounded-lg">
-                <div class="text-black text-2xl">
+                <div class="text-black text-3xl font-semibold">
                     Tags
                 </div>
                 <div>
 
-                  {AllData.flatMap((data) => 
-                    data.tags.nodes.map((itm) => (
-                        <button type="button" class="inline-flex m-2 items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  {AllTag.flatMap((data) => 
+                    data.nodes.map((itm) => (
+                        <button type="button" class="inline-flex m-2 items-center px-5 py-2.5 text-sm font-medium text-center text-black bg-blue-200 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                           {itm.name}
-                        <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                        <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-white bg-blue-500 rounded-full">
                         2
                         </span>
                         </button>
@@ -334,11 +341,19 @@ AllData.map((data,index)=>{
         </div>
 
         </div>
-        <!-- 1st div -->
 
+        
      
-    </div>
+      </div>
+    <!-- nxt post -->
+    <div id="nextpost" class="xsm:hidden"></div>
+
     
+  </div>
+  <div class="flex flex-row">
+    <div class="w-auto "></div> this has more content
+    <div class="w-auto "></div> this has less content
+  </div>
 
 
 
@@ -405,9 +420,9 @@ AllData.map((data,index)=>{
 
 </div>
 -->
-<!-- 
+
 <script src="../../../public/scripts/content/inf.ts">
-</script>  -->
+</script> 
 
 <script>
   const a:any=document.getElementById("table_content");

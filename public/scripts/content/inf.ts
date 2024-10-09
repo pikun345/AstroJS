@@ -6,7 +6,6 @@
   let data=document.querySelector(".blog-section")?.getAttribute("data-all");
   
 
-  console.log("nxt slug =",nextSlug);
   const loadNext=async()=>{
 
 
@@ -46,12 +45,8 @@
 
   async function render(){
     const data=await loadNext();
-    
-  
-     
-   const container :any= document.getElementById("nextpost");
-  
-  container.appendChild(data) 
+    const container :any= document.getElementById("nextpost");
+    container.appendChild(data) 
   
   }
   

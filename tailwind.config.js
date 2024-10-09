@@ -21,7 +21,9 @@ export default {
       width:{
         '84':'21rem',
         '90':'23.3rem'
-            }
+        },
+      
+      
     },
   },
   plugins: [

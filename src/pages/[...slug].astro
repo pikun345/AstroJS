@@ -23,12 +23,12 @@ export async function getStaticPaths({ paginate }) {
   const pages = [{ slug: "/", type: "Home" , data:data11}];
 
   const contentPages = data11.map((data) => ({
-    slug: "blog/" + data.slug,
-    type: "content",
-    data:data, // here each index data goes one by one 
-    AllData:data11
-  }));
-
+  slug: "blog/" + data.slug,
+  type: "content",
+  data: data, // each index data is assigned correctly
+  AllTag: data11.map((data) => data.tags),
+  AllCategory:data11.map((data) => data.categories),
+}));
     const auth=data11.map((data) => ({
     slug:data.author.node.uri,
     type: "author",
@@ -60,16 +60,16 @@ export async function getStaticPaths({ paginate }) {
 
 
 
-   const staticPaths = allPages.map(({ slug, type ,data,AllData}) => ({
+   const staticPaths = allPages.map(({ slug, type ,data,AllTag,AllCategory}) => ({
     params: { slug },
-    props: { type,data,nextSlugs,Cate,AllData}
+    props: { type,data,nextSlugs,Cate,AllTag,AllCategory}
   }));
   
   return staticPaths;
 }
 
 const { slug } = Astro.params;
-const { type, data ,nextSlugs,AllData} = Astro.props;
+const { type, data ,nextSlugs,AllTag,AllCategory} = Astro.props;
 
 //mapping with slug type and getting the component
 const PageComponent = Object.keys(componentMap).find((key) => key === type)? componentMap[type]: null;
@@ -78,7 +78,7 @@ const PageComponent = Object.keys(componentMap).find((key) => key === type)? com
 {
   PageComponent ? (
     <MainLayout>
-      <PageComponent data={data} sluglist={nextSlugs} slug={slug} AllData={AllData}/>
+      <PageComponent data={data} sluglist={nextSlugs} slug={slug} AllTag={AllTag} AllCategory={AllCategory}/>
     </MainLayout>
   ) : (
     <p>Page not found</p>
