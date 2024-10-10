@@ -8,7 +8,7 @@
   const modal :any= document.getElementById('modal');
 const openModal :any= document.getElementById('open-modal');
 const closeModal:any = document.getElementById('close-modal');
-let c=1;
+var c=1;
   
 
   const loadNext=async()=>{
