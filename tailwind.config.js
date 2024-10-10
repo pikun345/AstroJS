@@ -3,7 +3,24 @@ export default {
   darkMode: 'class', // Enable dark mode using a class
   content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}',],
   theme: {
+    screens: {
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
+      
       colors: {
         'custom-blue': '#le00e3',
       },
@@ -22,6 +39,7 @@ export default {
         '84':'21rem',
         '90':'23.3rem'
         },
+
       
       
     },

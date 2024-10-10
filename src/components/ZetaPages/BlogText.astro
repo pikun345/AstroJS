@@ -8,24 +8,3 @@ const {data}=Astro.props;
 
   </div>
 </div>
-<!-- 
-<script>
-
-const parser=new DOMParser();
-
-    const content:any=document.getElementById("content");
-    const tbl:any=document.getElementById("table");
-    const htmlData:any=content?.getAttribute("data-content");
-    console.log("html=",htmlData);
-    const newDoc=parser.parseFromString(htmlData,'text/html');
-    console.log("new doc",newDoc);
-    const divTg:any=newDoc.querySelector("div");
-    divTg.style.float="right";
-    divTg.classList.add("bg-white" ,"border", "border-blue-300","p-4","mb-3","hover:underline","space-x-4")
-    content.innerHTML=newDoc.body.innerHTML;
-
-    
-
-
-
-</script> -->

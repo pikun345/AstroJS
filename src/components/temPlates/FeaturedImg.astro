@@ -1,0 +1,42 @@
+---
+const {data}=Astro.props;
+
+---
+<div class="h-auto w-96 m-5 bg-white p-2 rounded-lg ">
+    <div class="w-full">
+            <h2 class="m-3 font-bold text-3xl">
+                Featured Insights
+            </h2>
+            <ul class="">
+              {
+                data.featuredImage ? (
+                
+                <li class="">
+                   <div class="flex flex-row w-full items-center hover:bg-blue-200 ">
+                     <div class="m-2">
+                       <img class="rounded-md object-cover" style="height: 100px; width: 100px;" src={ data.featuredImage.node.sourceUrl} alt="one img" />
+                     </div>
+                     <div class="ml-1 w-44 text-left font-bold"> <!-- Adjusted width and added left margin for spacing -->
+                       Text Of Featured Images 
+                     </div>
+                   </div>
+                </li>
+
+                  
+                  
+                ) : (<li class="mb-5 w-64 overflow-hidden">
+                   <div class="flex flex-row items-center hover:bg-blue-200 overflow-hidden"> <!-- Center the image and text vertically -->
+                     <div class="m-2">
+                       <img class="rounded-md object-cover" style="height: 100px; width: 100px;" src="" alt="one img" />
+                     </div>
+                     <div class="ml-1 w-36 text-left"> <!-- Adjusted width and added left margin for spacing -->
+                       No Featured Images 
+                     </div>
+                   </div>
+                </li>)
+                
+                
+              }
+            </ul>
+        </div>
+    </div>
