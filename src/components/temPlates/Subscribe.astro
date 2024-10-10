@@ -1,12 +1,13 @@
 ---
-
+import '../../styles/zeta.css'
 ---
 <div class="h-auto w-full m-5 bg-white p-5 rounded-lg">
   <div class="text-3xl text-black font-bold">Subscribe to Newsletter</div>
   <div
     class="flex justify-center items-center m-1 w-auto h-32 text-white bg-blue-950"
   >
-    <div class="flex flex-col mb-2 mt-2">
+    
+  <div class="flex flex-col mb-2 mt-2 flex-initial " id="open-modal">
       <h2 class="font-bold text-2xl">Get the AI Edge</h2>
       <div class="flex justify-center items-center">
         <p class="w-32 text-xl">
@@ -22,3 +23,48 @@
     </div>
   </div>
 </div>
+
+
+  
+
+  <!-- Modal Structure -->
+
+  <div id="modal" class="fixed inset-0 z-40 bg-opacity-75 hidden md:w-3/3 md:h-60 md:left-1/4 top-20 md:w-1/2">
+    <div class="bg-white p-2 rounded-lg sm:flex-col md:flex-row relative flex">
+      
+      <!-- Image Section -->
+      
+      <div class="md:w-1/2 sm:w-2/2">
+        <img src="https://assets.hyscaler.com/wp-content/uploads-webpc/uploads/2024/01/newsletter-subscribe-2.png.webp" alt="AI Image" class="md:w-full md:h-full sm:w-full sm:h-60 ">
+      </div>
+      
+      <div class="md:w-1/2 md:p-5 sm:w-2/2">
+        <button id="close-modal" class="absolute top-2 right-2 mr-4 text-lg text-gray-500 hover:text-gray-700">x</button>
+        
+        <h2 class="font-bold text-3xl mb-1 text-left">Get the AI Edge</h2>
+        <p class="text-left font-thin text-3xl mb-1">Subscribe to HyScaler's AI Newsletter Now!</p>
+        <p class="text-left font-extralight text-2xl mb-4">Be the first to get the latest AI updates</p>
+        
+        <form action="/submit" class="space-y-4">
+          <input type="text" name="name" placeholder="Name (Optional)" class="w-full border p-2 rounded-md">
+          <input type="email" name="email" placeholder="Email" class="w-full border p-2 rounded-md" required>
+          
+          <div class="flex items-center">
+            <input type="checkbox" id="robot-check" class="mr-2" required>
+            <label for="robot-check">I'm not a robot</label>
+          </div>
+          <div class="flex items-center justify-center">
+            <button type="submit" class=" border border-blue-300 text-blue-300 text-xl font-bold hover:bg-blue-200  focus:ring-blue-300 rounded-lg px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 w-1/2">Subscribe</button>
+
+
+          </div>
+  
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+
+  <script>
+</script>

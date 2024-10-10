@@ -36,7 +36,7 @@ export async function getStaticPaths({ paginate }) {
 
     
   }));
-  const Cate = data11.flatMap((data1) =>
+  const Category = data11.flatMap((data1) =>
     data1.categories.nodes.map((data) => ({
       slug: data.uri, 
       type: "Cat",
@@ -56,13 +56,13 @@ export async function getStaticPaths({ paginate }) {
   const nextSlugs =data11.map(post => post.slug); 
 
   // Combine pages and contentPages into one array
-  const allPages = [...pages,...contentPages,...auth,...Cate,...tags];
+  const allPages = [...pages,...contentPages,...auth,...Category,...tags];
 
 
 
    const staticPaths = allPages.map(({ slug, type ,data,AllTag,AllCategory}) => ({
     params: { slug },
-    props: { type,data,nextSlugs,Cate,AllTag,AllCategory}
+    props: { type,data,nextSlugs,Category,AllTag,AllCategory}
   }));
   
   return staticPaths;

@@ -25,6 +25,7 @@ export default {
         'custom-blue': '#le00e3',
       },
       
+      
       spacing: {
         '72': '18rem',
         '84': '21rem',
