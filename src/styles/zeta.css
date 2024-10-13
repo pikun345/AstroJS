@@ -129,10 +129,21 @@
   background-color: #1d4ed8; /* Tailwind's blue-600 */
 }
 
-#content div{
-float: right 
- 
+@media (min-width: 768px) { /* md screen size and larger */
+  #content div {
+    float: right;
+  }
+  #content div{
+    margin-left: 20px;
+    
+     
+    }
 }
+
+
+
+
+
 #content p{
    @apply mb-5 mt-2   
   }
@@ -140,6 +151,10 @@ float: right
   #content ul{
     @apply list-disc
   
+  }
+
+  #content ul{
+    @apply ml-4
   }
   #content li{
     @apply mb-3

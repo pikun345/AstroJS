@@ -66,12 +66,18 @@ var c=1;
   }
 
  
+//When the user scrolls down to the bottom of the page, the script checks if the modalShown key exists in localStorage. 
+//If it does not exist, it displays the modal and sets the key to true.
 
 window.addEventListener('scroll',()=>{
   if(window.innerHeight+window.scrollY>=document.body.offsetHeight-100){
-    if(c===1){
-      modal.classList.remove('hidden');
-      c=0;
+    if (c === 1) {
+      // Check localStorage to see if the modal has been shown before
+      if (!localStorage.getItem('modalShown')) {
+        modal.classList.remove('hidden');
+        localStorage.setItem('modalShown', 'true'); // Set flag in localStorage
+      }
+      c = 0;
     }
     render();
 

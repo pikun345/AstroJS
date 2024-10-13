@@ -2,7 +2,7 @@
 const {data}=Astro.props;
 
 ---
-<div class="h-auto w-96 m-5 bg-white p-2 rounded-lg ">
+<div class="h-auto md:w-96 sm:w-full  md:m-5 sm:mt-3 bg-white p-2 rounded-lg ">
     <div class="w-full">
             <h2 class="m-3 font-bold text-3xl">
                 Featured Insights
@@ -14,9 +14,9 @@ const {data}=Astro.props;
                 <li class="">
                    <div class="flex flex-row w-full items-center hover:bg-blue-200 ">
                      <div class="m-2">
-                       <img class="rounded-md object-cover" style="height: 100px; width: 100px;" src={ data.featuredImage.node.sourceUrl} alt="one img" />
+                       <img class="rounded-md object-cover md:h-20 md:w-24 sm:h-24" src={ data.featuredImage.node.sourceUrl} alt="one img" />
                      </div>
-                     <div class="ml-1 w-44 text-left font-bold"> <!-- Adjusted width and added left margin for spacing -->
+                     <div class="ml-1 md:w-48 sm:w-48 text-left font-bold">
                        Text Of Featured Images 
                      </div>
                    </div>
