@@ -1,42 +1,45 @@
 ---
-const {AllCategory2}=Astro.props;
+const { AllCategory2 } = Astro.props;
+console.log(AllCategory2);
+
+const uniqueCategories = new Map(); 
+
+AllCategory2.forEach((data) => {
+  data.nodes.forEach((category) => {
+    uniqueCategories.set(category.name, category); // Use the category name as the key
+  });
+});
 ---
+
 <div class="h-auto md:w-96 md:m-5 sm:w-full sm:mt-3 bg-white pl-5 pt-2 pb-2 rounded-lg">
-    <div class="text-4xl text-black font-bold mb-4">
-        Categories
-    </div>
-    <div class=" sm:flex sm:flex-wrap">
-      {AllCategory2.flatMap((data) =>
-      data.nodes.map((itm) => (
-        <div class="sm:mb-2 md:mb-0">
-          <button
-            type="button"
-            class="text-black md:w-84 sm:w-64 sm:ml-3 md:ml-1 sm:p-2 md:mb-2 bg-gray-100 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm md:p-4 inline-flex justify-between items-center dark:bg-white dark:hover:bg-blue-200 dark:focus:ring-blue-800 sm:flex sm:flex-row"
-          >
-            <span class="md:w-24 sm:text-nowrap">{itm.name}</span>
-            <span class="ml-2"> {/* Add margin to space out the SVG */}
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
-      ))
-    )}
-    
-       
-           
-    </div>
+  <div class="text-4xl text-black font-bold mb-4">Categories</div>
+  <div class="sm:flex sm:flex-wrap">
+    {Array.from(uniqueCategories.values()).map((itm) => (
+      <div class="sm:mb-2 md:mb-0">
+        <button
+          type="button"
+          class="text-black md:w-84 md:h-10 sm:w-64 sm:ml-3 md:ml-1 sm:p-2 md:mb-2 bg-gray-50 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm md:p-4 inline-flex justify-between items-center dark:bg-white dark:hover:bg-blue-200 dark:focus:ring-blue-800 sm:flex sm:flex-row"
+        >
+          <span class="md:w-auto sm:text-nowrap md:text-nowrap">{itm.name}</span>
+          <span class="ml-2">
+            <svg
+              class="rtl:rotate-180 w-3.5 h-3.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    ))}
+  </div>
 </div>
