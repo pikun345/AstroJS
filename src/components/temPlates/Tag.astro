@@ -14,17 +14,20 @@ AllTag.forEach((data) => {
   <div class="text-black text-3xl mb-4 font-semibold">Tags</div>
   <div>
     {Array.from(uniqueTags.values()).map((itm) => (
-      <span class="p-1 w-auto">
-        <button
-          type="button"
-          class="px-3 py-2 text-md mr-2 mb-2 font-normal text-center inline-flex items-center text-black bg-blue-50 rounded-2xl  focus:ring-2 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          {itm.name}
-          <span class="inline-flex items-center justify-center w-6 h-4 ms-2 text-xxs font-semibold text-white bg-blue-300 rounded-lg">
-            {itm.count}
-          </span>
-        </button>
-      </span>
+     <span class="p-1 w-auto">
+  <button
+    type="button"
+    class="px-3 py-2 text-md mr-2 mb-2 font-normal text-center inline-flex items-center text-black bg-blue-50 rounded-2xl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 max-w-full"
+  >
+    <span class="truncate max-w-[calc(100%-2rem)]">
+      {itm.name}
+    </span>
+    <span class="inline-flex items-center justify-center w-6 h-4 ms-2 text-xxs font-semibold text-white bg-blue-300 rounded-lg">
+      {itm.count}
+    </span>
+  </button>
+</span>
+
     ))}
   </div>
 </div>
