@@ -10,17 +10,16 @@ AllCategory2.forEach((data) => {
   });
 });
 ---
-
-<div class="h-auto md:w-96 md:m-5 sm:w-full sm:mt-3 bg-white pl-5 pt-2 pb-2 rounded-lg">
-  <div class="text-4xl text-black font-bold mb-4">Categories</div>
-  <div class="sm:flex sm:flex-wrap">
+<div class="h-auto md:w-96 md:m-5 xsm:w-full xsm:mt-3 bg-white pl-5 xsm:pr-3 sm:pr-5 pt-2 pb-2 rounded-lg">
+  <div class="text-4xl xsm:w-full text-black font-bold mb-4">Categories</div>
+  <div class="xsm:flex xsm:flex-wrap xsm:flex-col xsm:w-full sm:grid sm:grid-cols-2 sm:gap-4"> <!-- Modified this line -->
     {Array.from(uniqueCategories.values()).map((itm) => (
-      <div class="sm:mb-2 md:mb-0">
+      <div class="xsm:mb-2 md:mb-0 xsm:h-full">
         <button
           type="button"
-          class="text-black md:w-84 md:h-10 sm:w-64 sm:ml-3 md:ml-1 sm:p-2 md:mb-2 bg-gray-50 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm md:p-4 inline-flex justify-between items-center dark:bg-white dark:hover:bg-blue-200 dark:focus:ring-blue-800 sm:flex sm:flex-row"
+          class="text-black md:w-84 md:h-10 xsm:w-full sm:ml-3 md:ml-1 xsm:p-2 md:mb-2 bg-gray-50 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm md:p-4 inline-flex justify-between items-center dark:bg-white dark:hover:bg-blue-200 dark:focus:ring-blue-800 sm:flex sm:flex-row"
         >
-          <span class="md:w-auto sm:text-nowrap md:text-nowrap">{itm.name}</span>
+          <span class="md:w-auto xsm:text-nowrap md:text-nowrap">{itm.name}</span>
           <span class="ml-2">
             <svg
               class="rtl:rotate-180 w-3.5 h-3.5"

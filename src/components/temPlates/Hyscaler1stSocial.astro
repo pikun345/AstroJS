@@ -3,21 +3,21 @@ import "../../styles/zeta.css";
 const { data } = Astro.props;
 ---
 
-<div class="flex sm:justify-center sm:items-center lg:items-start flex-col">
-  <div class="mt-5 mb-3 flex md:flex-row sm:flex-col ">
-    <span class="font-bold mr-2 md:mb-11 sm:flex sm:items-center sm:justify-center sm:m-2"> Tag: </span>
-    <span class="sm:flex sm:items-center sm:justify-center">
+<div class="flex xsm:justify-center xsm:items-center lg:items-start flex-col">
+  <div class="mt-5 mb-3 flex md:flex-row xsm:flex-col ">
+    <span class="font-bold mr-2 md:mb-11 xsm:flex xsm:items-center xsm:justify-center sm:m-2"> Tag: </span>
+    <span class="xsm:flex xsm:flex-wrap xsm:items-center xsm:justify-center">
       {
         data.tags.nodes.map((itm) => (
           <span class=" p-1 md:mb-5">
            <button
     type="button"
-    class="px-3 py-2 text-md mr-2 mb-2 font-normal text-center inline-flex items-center text-black bg-blue-50 rounded-2xl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 max-w-full"
+    class="px-3 py-2 text-md xsm:mr-0 mr-2 mb-2 font-normal text-center inline-flex items-center text-black bg-blue-50 rounded-2xl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 max-w-full"
   >
     <span class="truncate max-w-[calc(100%-2rem)]">
       {itm.name}
     </span>
-    <span class="inline-flex items-center justify-center w-6 h-4 ms-2 text-xxs font-semibold text-white bg-blue-300 rounded-lg">
+    <span class="inline-flex items-center justify-center w-6 h-4 xms-2 text-xxs font-semibold text-white bg-blue-300 rounded-lg">
       {itm.count}
     </span>
   </button>
@@ -27,9 +27,9 @@ const { data } = Astro.props;
     </span>
   </div>
 
-  <div class="flex md:flex-row mb-9 sm:flex sm:flex-col">
-    <span class="font-bold mr-2 sm:flex sm:items-center sm:justify-center sm:m-2"> Share : </span>
-    <div class="sm:flex sm:flex-row">
+  <div class="flex md:flex-row mb-9 xsm:flex xsm:flex-col">
+    <span class="font-bold mr-2 xsm:flex xsm:items-center xsm:justify-center xsm:m-2"> Share : </span>
+    <div class="xsm:flex xsm:flex-row">
       <span class="ml-3 mr-3">
         <!-- Github -->
         <span class="[&>svg]:h-8 [&>svg]:w-8">
@@ -81,8 +81,8 @@ const { data } = Astro.props;
  
   </div>
 
-  <div class="mt-2 sm:flex md:flex-row sm:flex-col sm:items-center sm:justify-center">
-    <span class="font-bold mr-2 sm:m-2"> Comment : </span>
+  <div class="mt-2 xsm:flex md:flex-row xsm:flex-col xsm:items-center xsm:justify-center">
+    <span class="font-bold mr-2 xsm:m-2"> Comment : </span>
     <span>
       <button
         type="button"

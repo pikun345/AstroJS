@@ -3,13 +3,13 @@ import '../../styles/zeta.css';
 const { data,slug } = Astro.props;
 
 ---
-<div class="relative flex flex-col md:flex-row justify-center items-center group">
+<div class="relative flex flex-col xsm:h-96 xsm:mb-3  md:flex-row justify-center items-center group">
     {data.featuredImage ? (
-        <div class="z-10 relative xsm:w-[93%] md:w-[100%] lg:w-5/6 sm:w-[90%] md:pl-20 md:pr-20 ">
+        <div class="z-10 relative  xsm:h-full xsm:w-full md:w-[100%] lg:w-5/6 sm:w-[90%] md:pl-20 md:pr-20 ">
             <img 
                 src={data.featuredImage.node.sourceUrl}
                 alt="img1" 
-                class="relative mt-7 z-10 rounded-lg md:w-full "
+                class="relative mt-7 xsm:h-full z-10 rounded-lg md:w-full "
                 style={{ filter: 'brightness(50%)' }}
             />
         </div>
@@ -26,7 +26,7 @@ const { data,slug } = Astro.props;
 
     )}
 
-<div class="absolute xsm:w-[90%] sm:ml-4 xsm:h-40 sm:h-60 sm:top-36    xsm:left-9 z-20 md:top-40  lg:left-9 lg:top-56  md:w-2/3 md:-left-16  sm:left-10 transform xl:translate-x-2/2 md:translate-x-24  md:ml-20">
+<div class="absolute xsm:w-[90%] sm:ml-4 xsm:h-40 sm:h-60 sm:top-36 sm:w-[100%] xsm:top-40 sm:left-8 xsm:left-9 z-20 md:top-40  lg:left-9 lg:top-56  md:w-2/3 md:-left-16 transform xl:translate-x-2/2 md:translate-x-24  md:ml-20">
 
     <div class="bg-blue-950 xsm:hidden sm:flex sm:flex-row sm:mb-2 rounded-lg p-2 w-52 lg:w-64 2xl:w-80 m-3 sm:w-1/2 sm:transform sm:-translate-x-4 md:translate-x-0">
        <span>
@@ -35,16 +35,16 @@ const { data,slug } = Astro.props;
         <span class="text-white sm:text-sm md:text-xl ">Artificial Intelligence</span>
         </div>
         
-        <div class="font-bold xsm:text-lg  md:text-xl xl:text-5xl 2xl:text-6xl md:m-3 sm:mt-2 sm:text-xl text-white" style={{ filter: 'brightness(200%)' }}>
+        <div class="font-bold xsm:text-lg sm:w-auto md:text-xl xl:text-5xl 2xl:text-6xl md:m-3 sm:mt-2 sm:text-xl text-white" style={{ filter: 'brightness(200%)' }}>
             <p class="break-words">Boost AI Literacy: 5 Proven Ways to Master Essential Skills</p>
         </div>
-        <div id="dt" data-dt={data.date} class="bg-black xsm:w-32 md:w-36 sm:text-lg rounded-2xl p-2  sm:w-32 lg:w-32 2xl:w-80 text-white md:m-3 sm:m-1 md:text-lg">
+        <div id="dt" data-dt={data.date} class=" xsm:w-32 md:w-36 sm:text-lg rounded-2xl p-2  sm:w-32 lg:w-32 2xl:w-80 text-white md:m-3 sm:m-1 md:text-lg">
             <!-- string dt -->
         </div>
         <div class="sm:mt-9">
             
-                <span class="flex flex-row space-x-7 items-center md:mt-4 sm:mt-5 sm:-left-4 md:left-0 group relative">
-                    <span class="flex flex-row space-x-4 items-center relative sm:absolute sm:-bottom-9 md:absolute">
+                <span class="flex flex-row space-x-7  items-center md:mt-4 sm:mt-5 sm:-left-4 md:left-0 group relative">
+                    <span class="flex flex-row space-x-4 xsm:space-x-1 items-center relative sm:absolute sm:-bottom-9 md:absolute">
                         <span class="absolute inset-0 bg-blue-200 opacity-0 group-hover:bg-blue-500 md:group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
                         <span class="text-white m-3 z-10 w-auto h-auto ">
                             <span id="comment-btn2" class=" flex justify-center items-center w-auto h-auto">
@@ -98,7 +98,6 @@ const { data,slug } = Astro.props;
             </div>
         </div>
     </div>
-</div>
 
 <script>
     // making share button 
