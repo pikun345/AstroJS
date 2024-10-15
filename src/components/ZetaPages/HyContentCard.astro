@@ -1,11 +1,11 @@
 ---
 import '../../styles/zeta.css';
-const { data } = Astro.props;
+const { data,slug } = Astro.props;
 
 ---
 <div class="relative flex flex-col md:flex-row justify-center items-center group">
     {data.featuredImage ? (
-        <div class="z-10 relative md:w-1/2 lg:w-5/6 sm:w-[90%] md:pl-20 md:pr-20 ">
+        <div class="z-10 relative xsm:w-[93%] md:w-[100%] lg:w-5/6 sm:w-[90%] md:pl-20 md:pr-20 ">
             <img 
                 src={data.featuredImage.node.sourceUrl}
                 alt="img1" 
@@ -15,7 +15,7 @@ const { data } = Astro.props;
         </div>
 
     ) : (
-    <div class="z-10 relative md:w-1/2 lg:w-5/6 sm:w-[90%] md:pl-20 md:pr-20 ">
+    <div class="z-10 relative xsm:w-[95%] md:w-[100%] lg:w-5/6 sm:w-[90%] md:pl-20 md:pr-20 ">
             <img 
                 src={"https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"}  
                 alt="img1" 
@@ -26,28 +26,39 @@ const { data } = Astro.props;
 
     )}
 
-<div class="absolute z-20 md:top-1/3  md:w-2/3   sm:left-10 sm:top-10 transform xl:translate-x-2/2 md:translate-x-24  md:ml-20">
-    <div class="bg-blue-950 rounded-lg p-2 w-52 lg:w-64 2xl:w-80 m-3 sm:w-1/2 sm:transform sm:-translate-x-4 md:translate-x-0">
-            <span class="text-white">logo</span>
-            <span class="text-white sm:text-sm md:text-xl">Artificial Intelligence</span>
+<div class="absolute xsm:w-[90%] sm:ml-4 xsm:h-40 sm:h-60 sm:top-36    xsm:left-9 z-20 md:top-40  lg:left-9 lg:top-56  md:w-2/3 md:-left-16  sm:left-10 transform xl:translate-x-2/2 md:translate-x-24  md:ml-20">
+
+    <div class="bg-blue-950 xsm:hidden sm:flex sm:flex-row sm:mb-2 rounded-lg p-2 w-52 lg:w-64 2xl:w-80 m-3 sm:w-1/2 sm:transform sm:-translate-x-4 md:translate-x-0">
+       <span>
+        <img class="h-7 w-auto mr-2 remove-bg text-white" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3c/af/23/3caf2365-37f0-712f-d09c-7ac2376e0ced/AppIcon-0-1x_U007ephone-0-85-220-0.png/230x0w.webp" alt="">
+       </span>
+        <span class="text-white sm:text-sm md:text-xl ">Artificial Intelligence</span>
         </div>
-        <div class="font-bold md:text-xl xl:text-5xl 2xl:text-6xl md:m-3 sm:mt-2  sm:text-md text-white" style={{ filter: 'brightness(200%)' }}>
+        
+        <div class="font-bold xsm:text-lg  md:text-xl xl:text-5xl 2xl:text-6xl md:m-3 sm:mt-2 sm:text-xl text-white" style={{ filter: 'brightness(200%)' }}>
             <p class="break-words">Boost AI Literacy: 5 Proven Ways to Master Essential Skills</p>
         </div>
-        <div class="bg-black rounded-lg p-2 md:w-52 sm:w-32 lg:w-64 2xl:w-80 text-white md:m-3 sm:m-1 sm:text-sm md:text-lg">
-            {data.date}
+        <div id="dt" data-dt={data.date} class="bg-black xsm:w-32 md:w-36 sm:text-lg rounded-2xl p-2  sm:w-32 lg:w-32 2xl:w-80 text-white md:m-3 sm:m-1 md:text-lg">
+            <!-- string dt -->
         </div>
-        <div>
+        <div class="sm:mt-9">
             
-                <span class="flex flex-row space-x-7 items-center md:mt-5 sm:mt-5 sm:-left-4 md:left-0 group relative">
-                    <span class="flex flex-row space-x-4 items-center relative sm:absolute sm:-bottom-9 md:absolute md:-bottom-20">
-                        <span class="absolute inset-0 bg-blue-200 opacity-0 group-hover:bg-blue-500 md:group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></span>
-                        <span class="text-white m-3 z-10">logo</span>
+                <span class="flex flex-row space-x-7 items-center md:mt-4 sm:mt-5 sm:-left-4 md:left-0 group relative">
+                    <span class="flex flex-row space-x-4 items-center relative sm:absolute sm:-bottom-9 md:absolute">
+                        <span class="absolute inset-0 bg-blue-200 opacity-0 group-hover:bg-blue-500 md:group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+                        <span class="text-white m-3 z-10 w-auto h-auto ">
+                            <span id="comment-btn2" class=" flex justify-center items-center w-auto h-auto">
+                                <svg class="h-9 w-10 text-white"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" /></svg>
+                    
+                            </span>
+                            
+                        </span>
                         <span class="border-l-2 h-6 border-white bg-white z-10"></span>
 
                         <span class="flex flex-row space-x-7 p-3">
+                        
                             <!-- Facebook Icon -->
-                            <a href="https://facebook.com/zetamatic" class="w-8 h-8 lg:w-12 lg:h-12 flex items-center justify-center bg-white rounded-full p-2 relative z-10" target="_blank">
+                            <a href="#" id="fbbtn" class="w-8 h-8 lg:w-12 lg:h-12 flex items-center justify-center bg-white rounded-full p-2 relative z-10" target="_blank">
                                 <span class="[&>svg]:h-4 [&>svg]:w-4 lg:[&>svg]:h-5 lg:[&>svg]:w-5">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512">
                                         <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/>
@@ -56,7 +67,7 @@ const { data } = Astro.props;
                             </a>
                             
                             <!-- X Icon -->
-                            <a href="https://x.com/zetamatic" class="w-8 h-8 lg:w-12 lg:h-12 flex items-center justify-center bg-white rounded-full p-2 relative z-10" target="_blank">
+                            <a href="#" id="xbtn" class="w-8 h-8 lg:w-12 lg:h-12 flex items-center justify-center bg-white rounded-full p-2 relative z-10" target="_blank">
                                 <span class="[&>svg]:h-4 [&>svg]:w-4 lg:[&>svg]:h-5 lg:[&>svg]:w-5">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512">
                                         <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
@@ -65,13 +76,22 @@ const { data } = Astro.props;
                             </a>
                             
                             <!-- YouTube Icon -->
-                            <a href="https://youtube.com/zetamatic" class="w-8 h-8 lg:w-12 lg:h-12 flex items-center justify-center bg-white rounded-full p-2 relative z-10" target="_blank">
+                            <a href="#" id="utb" class="w-8 h-8 lg:w-12 lg:h-12 flex items-center justify-center bg-white rounded-full p-2 relative z-10" target="_blank">
                                 <span class="[&>svg]:h-4 [&>svg]:w-4 lg:[&>svg]:h-5 lg:[&>svg]:w-5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512">
-                                        <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/>
-                                    </svg>
+                                    <span class="[&>svg]:h-5 [&>svg]:w-5">
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          fill="currentColor"
+                                          viewBox="0 0 448 512">
+                                          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                                          <path
+                                            d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+                                        </svg>
+                                      </span>
                                 </span>
                             </a>
+                            
+                            
                         </span>
                     </span>
                 </span>
@@ -79,3 +99,61 @@ const { data } = Astro.props;
         </div>
     </div>
 </div>
+
+<script>
+    // making share button 
+    const a= window.location.href//getting the current url 
+    const fb=document.getElementById("fbbtn");
+    const xb=document.getElementById("xbtn");
+    const yb=document.getElementById("utb");
+
+    const fburl=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(a)}`;
+    const xburl=`https://x.com/intent/post?url=${encodeURIComponent(a)}`;
+    const yburl=`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(a)}`;
+
+    fb?.setAttribute("href",fburl)
+    xb?.setAttribute("href",xburl)
+    yb?.setAttribute("href",yburl)
+
+    //convting to desired date format
+  function formatToReadableDate(isoString) {
+  const date = new Date(isoString);
+
+  // Array of month names
+  const months = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+
+  const monthName = months[date.getMonth()];
+  const day = date.getDate();
+
+  // Add suffix for the day (st, nd, rd, th)
+  const daySuffix = (d) => {
+    if (d > 3 && d < 21) return 'th'; // Covers 11th to 19th
+    switch (d % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  };
+
+  const year = date.getFullYear();
+
+  return monthName+" "+day+" "+year;
+}
+
+// Example usage
+const date11:any=document.getElementById("dt")
+const isoDate =date11?.getAttribute("data-dt");
+const readableDate = formatToReadableDate(isoDate);
+console.log(readableDate); // Output: "Oct 7th 2024"
+date11.innerHTML+=readableDate
+
+
+
+
+
+
+</script>

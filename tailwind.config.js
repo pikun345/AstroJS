@@ -4,10 +4,11 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}',],
   theme: {
     screens: {
-      'sm': '100px',
+       'xsm':'300px',
+      'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '900px',
+      'md': '768px',
       // => @media (min-width: 768px) { ... }
 
       'lg': '1024px',
