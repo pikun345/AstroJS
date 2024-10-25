@@ -23,8 +23,8 @@ const nextSlug = sluglist[currentIndex + 1]; //temporary setup
 // const nextSlug = data.nextPost.slug; this will work when next post is not null and contain the next slug
 ---
 
-<div  class="blog-section  xsm:ml-5 xsm:mr-5 h-auto" id={data.slug} data-nextSlug={nextSlug} data-all={data}>
-  <div class="flex flex-col  lg:pl-40 lg:pr-40 h-full w-full sm:p-10">
+<div  class="blog-section md:bg-pink-500 xsm:ml-5 xsm:mr-5 h-auto" id={data.slug} data-nextSlug={nextSlug} data-all={data}>
+  <div class="flex flex-col md:bg-yellow-500 lg:bg-violet-600 lg:pl-40 lg:pr-40 h-full w-full sm:p-10">
       <HyContentCard data={data} slug={slug}/>
 
 
